@@ -48,32 +48,32 @@ function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link to="/medinischoolofdesign" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  Medini School of Design
+                  
                 </Link>
               </li>
               <li>
                 <Link to="/bim_construct" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  BIM Construct
+                  
                 </Link>
               </li>
               <li>
                 <Link to="/techvritti" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  TechVritti
+                  
                 </Link>
               </li>
               <li>
                 <Link to="/teamech" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  Mechsetu
+                 
                 </Link>
               </li>
               <li>
                 <Link to="/eduphygital" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  EDUPHYGITAL
+                 
                 </Link>
               </li>
               <li>
                 <Link to="/digidhvani" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  DigiDhvani
+                 
                 </Link>
               </li>
               <li>

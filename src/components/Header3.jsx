@@ -290,17 +290,17 @@ const Header = () => {
                 )}
                 <Button variant="outline" className="w-full flex items-center">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/about">About</Link>
+                    <Link to="/about"></Link>
                   </SheetTrigger>
                 </Button>
                 <Button variant="outline" className="w-full flex items-center">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/blog">Blog</Link>
+                    <Link to="/blog"></Link>
                   </SheetTrigger>
                 </Button>
                 <Button variant="outline" className="w-full flex items-center">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/awards">Awards</Link>
+                    <Link to="/awards"></Link>
                   </SheetTrigger>
                 </Button>
                 <Button variant="outline" className="w-full flex items-center">
@@ -333,21 +333,11 @@ const Header = () => {
 
               {!isMediniSchool && !isBimConstruct && !isTeaMech && !isTechVritti && (
                 <div className="flex items-center gap-6 py-3 px-4 min-w-max">
-                <div className="nav-item ">
-                  <Link to="/">Home</Link>
-                </div>
-                <div className="nav-item ">
-                  <Link to="/about">About</Link>
-                </div>
-                <div className="nav-item ">
-                  <Link to="/blog">Blog</Link>
-                </div>
-                <div className="nav-item ">
-                  <Link to="/awards">Awards</Link>
-                </div>
-                <div className="nav-item">
-                  <Link to="/contact">Contact</Link>
-                </div>
+               
+                
+                
+                
+               
               </div>
               )}
 

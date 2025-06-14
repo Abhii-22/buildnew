@@ -11,19 +11,19 @@ export function MissionSection() {
               </div>
               <h2 className="text-3xl font-bold tracking-tight">Empowering Bharat by transforming technologies into progress</h2>
               <p className="text-muted-foreground">
-                  To lead the transformation of individuals, academics, students, and professionals through innovative digital technology. By integrating cutting-edge tools into education and professional development. Our vision is to bridge traditional learning and digital advancements, ensuring that all stakeholders have the skills and knowledge necessary to drive progress and success across diverse industries.
+                  To become the leading platform for Gen Z entrepreneurship — one that not only supports startup creation but also sparks a movement of youth-led innovation and impact.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
                 <div className="space-y-2">
                   <h3 className="text-xl font-semibold">Our Mission</h3>
                   <p className="text-muted-foreground">
-                    Our mission is to provide accessible and transformative digital education and professional development solutions.
+                    Our mission to empower the next generation of entrepreneurs with the tools, insights, and support systems they need to build impactful startups — faster, smarter, and more authentically.
                   </p>
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-xl font-semibold">Our Values</h3>
                   <p className="text-muted-foreground">
-                    Innovation, excellence, integrity, collaboration, and client success drive everything we do.
+                    Innovation First, excellence, integrity, collaboration, and client success drive everything we do.
                   </p>
                 </div>
               </div>

@@ -29,7 +29,7 @@ export function AboutHero() {
             </h1>
             
             <p className="text-lg text-muted-foreground">
-              Medini Technologies has been a trusted partner for businesses seeking to leverage technology for growth. For over a decade, we have continued to innovate and deliver exceptional solutions, driven by a commitment to our client's long-term success.
+              Founded with a vision to redefine the startup experience for the digital-native generation, BuilddSpace is a vibrant ecosystem where young founders, creators, and innovators find the resources, community, and mentorship they need to turn their bold ideas into thriving ventures.
             </p>
             
             {/* <div className="pt-2">

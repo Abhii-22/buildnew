@@ -34,13 +34,13 @@ function App() {
           <main className="flex-1 mt-10">
             <ScrollToTop />
             <Routes>
-              <Route path="/" element={<FrontPage />} />
-              <Route path="/home" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
+              <Route path="/" element={<BuilddSpaceHome />} />
+              {/*<Route path="/home" element={<HomePage />} />*/}
+              {/*<Route path="/about" element={<AboutPage />} />*/}
               {/* <Route path="/services" element={<ServicesPage />} /> */}
-              <Route path="/awards" element={<AwardsPage />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/contact" element={<ContactPage />} />
+             {/*} <Route path="/awards" element={<AwardsPage />} />*/}
+              {/*<Route path="/blog" element={<BlogPage />} />*/}
+              {/*<Route path="/contact" element={<ContactPage />} />*/}
 
               <Route path="/mediniedutech" element={<Home />} />
               <Route path="/mediniedutech/about" element={<AboutPage />} />
