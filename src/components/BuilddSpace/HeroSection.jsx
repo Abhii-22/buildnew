@@ -1,125 +1,167 @@
-import { useState, useRef, useEffect } from "react"
-import { ChevronLeft, ChevronRight, Building, Layers, Home, Ruler, Pencil } from "lucide-react"
-import { Link } from "react-router-dom"
-import { motion } from "framer-motion"
+import React, { useState, useRef, useEffect } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Building,
+  Layers,
+  Home,
+  Ruler,
+  Pencil,
+  X
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Import images
-import bg_image from "@/assets/IMAGES/alex-kotliarskyi-QBpZGqEMsKg-unsplash.jpg"
-import architectureImage from "@/assets/IMAGES/getty-images-qk02f4TFFC4-unsplash.jpg"
-import interiorDesignImage from "@/assets/IMAGES/getty-images-GWy4HmlGraI-unsplash.jpg"
-import constructionImage from "@/assets/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg"
-import renovationImage from "@/assets/IMAGES/getty-images-X-lDEMCZBz0-unsplash.jpg"
-import sustainableDesignImage from "@/assets/IMAGES/getty-images-KD_fT_T4D24-unsplash.jpg"
+import bg_image from "@/assets/IMAGES/alex-kotliarskyi-QBpZGqEMsKg-unsplash.jpg";
+import architectureImage from "@/assets/IMAGES/getty-images-qk02f4TFFC4-unsplash.jpg";
+import interiorDesignImage from "@/assets/IMAGES/getty-images-GWy4HmlGraI-unsplash.jpg";
+import constructionImage from "@/assets/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg";
+import renovationImage from "@/assets/IMAGES/getty-images-X-lDEMCZBz0-unsplash.jpg";
+import sustainableDesignImage from "@/assets/IMAGES/getty-images-KD_fT_T4D24-unsplash.jpg";
 
 function HeroSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isHovering, setIsHovering] = useState(false)
-  const [headerHeight, setHeaderHeight] = useState(0)
-  const sliderRef = useRef(null)
-  const heroRef = useRef(null)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const [selectedService, setSelectedService] = useState(null); // Selected service for details modal
+  const [showRegistrationForm, setShowRegistrationForm] = useState(false); // Show registration form modal
+  const [registrationServiceName, setRegistrationServiceName] = useState(""); // Holds name of selected service for registration
+
+  const sliderRef = useRef(null);
+  const heroRef = useRef(null);
 
   const services = [
     {
       id: 1,
-      icon: <Building className="w-8 h-8 text-amber-500" />,
+      icon: <Building className="w-8 h-8 text-amber-500" aria-hidden="true" />,
       image: `${architectureImage}?height=200&width=300`,
       name: "Architectural Design",
-      description: "Innovative architectural solutions tailored to your vision and requirements",
-      link: "/builddspace/services/architecture",
+      description: "Innovative architectural solutions tailored to your vision and requirements.",
+      details: [
+        "Conceptual design and planning",
+        "3D modeling and visualization",
+        "Structural engineering integration",
+        "Sustainable and eco-friendly design practices",
+        "Building codes and regulatory compliance",
+        "Custom residential and commercial projects",
+        "Project feasibility studies and site analysis"
+      ],
     },
     {
       id: 2,
-      icon: <Layers className="w-8 h-8 text-blue-500" />,
+      icon: <Layers className="w-8 h-8 text-blue-500" aria-hidden="true"/>,
       image: `${interiorDesignImage}?height=200&width=300`,
       name: "Interior Design",
-      description: "Transform your spaces with our expert interior design services",
-      link: "/builddspace/services/interior-design",
+      description: "Transform your spaces with our expert interior design services.",
+      details: [
+        "Space planning and layouts",
+        "Lighting design and fixture selection",
+        "Furniture and material sourcing",
+        "Custom cabinetry and millwork design",
+        "Color palette and finishing selections",
+        "Smart home integration",
+        "Project management from concept to completion"
+      ],
     },
     {
       id: 3,
-      icon: <Home className="w-8 h-8 text-green-500" />,
+      icon: <Home className="w-8 h-8 text-green-500" aria-hidden="true"/>,
       image: `${constructionImage}?height=200&width=300`,
       name: "Construction Management",
-      description: "Comprehensive construction management from planning to completion",
-      link: "/builddspace/services/construction",
+      description: "Comprehensive construction management from planning to completion.",
+      details: [
+        "Budget planning and cost control",
+        "Scheduling and timeline management",
+        "Quality assurance and safety compliance",
+        "Subcontractor coordination",
+        "Procurement and materials management",
+        "Site supervision and progress tracking",
+        "Final inspections and handover documentation"
+      ],
     },
     {
       id: 4,
-      icon: <Ruler className="w-8 h-8 text-purple-500" />,
+      icon: <Ruler className="w-8 h-8 text-purple-500" aria-hidden="true"/>,
       image: `${renovationImage}?height=200&width=300`,
       name: "Renovation Services",
-      description: "Revitalize your existing spaces with our expert renovation services",
-      link: "/builddspace/services/renovation",
+      description: "Revitalize your existing spaces with our expert renovation services.",
+      details: [
+        "Structural modifications and expansions",
+        "Historic preservation and restoration",
+        "Energy efficient retrofits",
+        "Interior and exterior remodeling",
+        "Custom finishes and bespoke designs",
+        "Damage remediation and repairs",
+        "Permit acquisition and regulatory compliance"
+      ],
     },
     {
       id: 5,
-      icon: <Pencil className="w-8 h-8 text-indigo-500" />,
+      icon: <Pencil className="w-8 h-8 text-indigo-500" aria-hidden="true"/>,
       image: `${sustainableDesignImage}?height=200&width=300`,
       name: "Sustainable Design",
-      description: "Eco-friendly design solutions for a greener future",
-      link: "/builddspace/services/sustainable-design",
+      description: "Eco-friendly design solutions for a greener future.",
+      details: [
+        "Passive solar design strategies",
+        "Energy efficient HVAC systems",
+        "Renewable energy integration",
+        "Water conservation and management",
+        "Sustainable materials sourcing",
+        "LEED certification consultancy",
+        "Waste reduction and recycling plans"
+      ],
     }
-  ]
-  
+  ];
+
   // Calculate header height on mount and window resize
   useEffect(() => {
     const calculateHeaderHeight = () => {
-      const header = document.querySelector("header")
+      const header = document.querySelector("header");
       if (header) {
-        setHeaderHeight(header.offsetHeight)
+        // Just keeping for consistency, even if not used
       }
-    }
+    };
 
-    // Initial calculation
-    calculateHeaderHeight()
+    calculateHeaderHeight();
 
-    // Recalculate on resize
-    window.addEventListener("resize", calculateHeaderHeight)
-
-    return () => {
-      window.removeEventListener("resize", calculateHeaderHeight)
-    }
-  }, [])
+    window.addEventListener("resize", calculateHeaderHeight);
+    return () => window.removeEventListener("resize", calculateHeaderHeight);
+  }, []);
 
   const slideLeft = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1)
+      setCurrentIndex(currentIndex - 1);
     } else {
-      // Loop back to the end
-      setCurrentIndex(services.length - 4)
+      setCurrentIndex(services.length - 4);
     }
-  }
+  };
 
   const slideRight = () => {
     if (currentIndex < services.length - 4) {
-      setCurrentIndex(currentIndex + 1)
+      setCurrentIndex(currentIndex + 1);
     } else {
-      // Loop back to the beginning
-      setCurrentIndex(0)
+      setCurrentIndex(0);
     }
-  }
+  };
 
   useEffect(() => {
-    let interval
-    
-    if (!isHovering) {
+    let interval;
+    if (!isHovering && !selectedService && !showRegistrationForm) {
       interval = setInterval(() => {
         setCurrentIndex((prevIndex) =>
           prevIndex >= services.length - 4 ? 0 : prevIndex + 1
-        )
-      }, 5000) // Change every 5 seconds for smoother experience
+        );
+      }, 5000);
     }
+    return () => clearInterval(interval);
+  }, [services.length, isHovering, selectedService, showRegistrationForm]);
 
-    return () => clearInterval(interval)
-  }, [services.length, isHovering])
-
-  const visibleCards = 4 // Number of cards visible at once
+  const visibleCards = 4;
 
   return (
     <>
       {/* Hero Section */}
       <section className="relative overflow-hidden h-[70vh] flex items-center" ref={heroRef}>
-        {/* Background with overlay */}
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center z-0 transition-opacity duration-700"
           style={{
@@ -129,11 +171,9 @@ function HeroSection() {
         >
           <div className="absolute inset-0 bg-black bg-opacity-75"></div>
         </div>
-        
-        {/* Gradient overlay */}
+
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/20 via-black/30 to-black/30"></div>
-        
-        {/* Content */}
+
         <div className="container mx-auto px-4 relative z-10 pt-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -148,7 +188,7 @@ function HeroSection() {
               <p className="text-xl md:text-2xl text-gray-300">
                 Innovative architectural and design solutions to transform your vision into reality
               </p>
-              
+
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   to="/builddspace/contact"
@@ -169,8 +209,8 @@ function HeroSection() {
         </div>
       </section>
 
-      {/* Services Slider Section - Separate from Hero */}
-      <section className="bg-gradient-to-b from-gray-900 to-gray-800 py-20">
+      {/* Services Slider Section */}
+      <section className="bg-white py-20 relative">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0 }}
@@ -179,48 +219,54 @@ function HeroSection() {
             className="mb-12"
           >
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">Our Design & Construction Services</h2>
-              
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Our Design & Construction Services</h2>
+
               <div className="flex space-x-2">
                 <button
                   onClick={slideLeft}
-                  className="p-2 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300 shadow-md"
+                  className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-300 shadow-md"
                   aria-label="Previous services"
                 >
-                  <ChevronLeft className="w-6 h-6 dark:text-white" />
+                  <ChevronLeft className="w-6 h-6 text-gray-900" />
                 </button>
                 <button
                   onClick={slideRight}
-                  className="p-2 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300 shadow-md"
+                  className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-300 shadow-md"
                   aria-label="Next services"
                 >
-                  <ChevronRight className="w-6 h-6 dark:text-white" />
+                  <ChevronRight className="w-6 h-6 text-gray-900" />
                 </button>
               </div>
             </div>
 
-            <div 
+            <div
               className="relative overflow-hidden"
               ref={sliderRef}
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             >
-              <div 
+              <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` }}
               >
                 {services.map((service) => (
-                  <div 
+                  <div
                     key={service.id}
-                    className="min-w-[25%] px-3 transition-all duration-300"
+                    className="min-w-[25%] px-3 transition-all duration-300 cursor-pointer"
+                    onClick={() => setSelectedService(service)} // Open detailed modal on click
+                    aria-label={`Show detailed services for ${service.name}`}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={e => { if (e.key === 'Enter') setSelectedService(service) }}
                   >
-                    <Link 
+                    <Link
                       to={service.link}
                       className="block bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:border-amber-500/30 h-full"
+                      onClick={e => e.preventDefault()} // Prevent navigation on click for demo modal
                     >
                       <div className="relative h-40 overflow-hidden">
-                        <img 
-                          src={service.image} 
+                        <img
+                          src={service.image}
                           alt={service.name}
                           className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
                         />
@@ -231,8 +277,8 @@ function HeroSection() {
                         </div>
                       </div>
                       <div className="p-5">
-                        <h3 className="text-lg font-semibold text-white mb-2">{service.name}</h3>
-                        <p className="text-gray-300 text-sm">{service.description}</p>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{service.name}</h3>
+                        <p className="text-gray-600 text-sm">{service.description}</p>
                       </div>
                     </Link>
                   </div>
@@ -241,9 +287,159 @@ function HeroSection() {
             </div>
           </motion.div>
         </div>
+
+        {/* Detailed Services Modal */}
+        <AnimatePresence>
+          {selectedService && (
+            <motion.div
+              className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-6 z-50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedService(null)} // Close modal clicking outside
+              aria-modal="true"
+              role="dialog"
+              aria-labelledby="modal-title"
+              aria-describedby="modal-description"
+            >
+              <motion.div
+                className="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full max-h-[80vh] overflow-y-auto p-8 relative"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                onClick={e => e.stopPropagation()} // Prevent modal close on clicking inside
+              >
+                <button
+                  className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors"
+                  onClick={() => setSelectedService(null)}
+                  aria-label="Close service details modal"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+                <h3 id="modal-title" className="text-3xl font-bold text-amber-400 mb-4">
+                  {selectedService.name} - Detailed Services
+                </h3>
+                <p id="modal-description" className="text-gray-300 mb-6">{selectedService.description}</p>
+                <ul className="list-disc list-inside space-y-2 text-gray-300">
+                  {selectedService.details.map((detail, idx) => (
+                    <li key={idx}>{detail}</li>
+                  ))}
+                </ul>
+                <div className="mt-6">
+                  <button
+                    onClick={() => {
+                      setRegistrationServiceName(selectedService.name); // Set the service name for registration
+                      setSelectedService(null); // Close the service details modal
+                      setShowRegistrationForm(true); // Open the registration form modal
+                    }}
+                    className="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-all duration-300"
+                  >
+                    Register for {selectedService.name}
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Registration Form Modal */}
+        <AnimatePresence>
+          {showRegistrationForm && (
+            <motion.div
+              className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-6 z-50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowRegistrationForm(false)} // Close modal clicking outside
+              aria-modal="true"
+              role="dialog"
+            >
+              <motion.div
+                className="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-8 relative"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                onClick={e => e.stopPropagation()} // Prevent modal close on clicking inside
+              >
+                <button
+                  className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors"
+                  onClick={() => setShowRegistrationForm(false)}
+                  aria-label="Close registration form"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+                <h3 className="text-3xl font-bold text-amber-400 mb-6">Service Registration</h3>
+                <form>
+                  <div className="mb-4">
+                    <label htmlFor="name" className="block text-gray-300 mb-2">Full Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      placeholder="Your full name"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label htmlFor="email" className="block text-gray-300 mb-2">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      placeholder="Your email address"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label htmlFor="password" className="block text-gray-300 mb-2">Password</label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      placeholder="Create a password"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label htmlFor="phone" className="block text-gray-300 mb-2">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      placeholder="Your phone number"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label htmlFor="service" className="block text-gray-300 mb-2">Service</label>
+                    <input
+                      type="text"
+                      id="service"
+                      name="service"
+                      value={registrationServiceName} // Use the service name for registration
+                      readOnly
+                      className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700"
+                    />
+                  </div>
+                  <div className="flex justify-end">
+                    <button
+                      type="submit"
+                      className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded transition-all duration-300"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
     </>
   );
 }
 
-export default HeroSection
+export default HeroSection;

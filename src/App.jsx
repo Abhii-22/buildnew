@@ -34,7 +34,7 @@ function App() {
           <main className="flex-1 mt-10">
             <ScrollToTop />
             <Routes>
-              <Route path="/" element={<TeamechHome />} />
+              <Route path="/" element={<BuilddSpaceHome />} />
               {/*<Route path="/home" element={<HomePage />} />*/}
               {/*<Route path="/about" element={<AboutPage />} />*/}
               {/* <Route path="/services" element={<ServicesPage />} /> */}

@@ -4,126 +4,126 @@ import { Building, Layers, Home, Ruler, Pencil, Clock, Users, Shield } from "luc
 
 const ServicesComponent = () => {
   const services = [
-    {
-      icon: <Building className="w-12 h-12 text-amber-500" />,
-      title: "Architectural Design",
-      description:
-        "Transform your vision into reality with our innovative architectural design services. We create functional, aesthetically pleasing spaces that meet your specific needs and exceed your expectations.",
-      features: [
-        "Conceptual Design Development",
-        "3D Visualization & Rendering",
-        "Construction Documentation",
-        "Building Code Compliance",
-        "Sustainable Design Solutions"
-      ]
-    },
-    {
-      icon: <Layers className="w-12 h-12 text-blue-500" />,
-      title: "Interior Design",
-      description:
-        "Create beautiful, functional interior spaces that reflect your style and enhance your daily life. Our interior design services focus on optimizing space, aesthetics, and functionality.",
-      features: [
-        "Space Planning & Layout",
-        "Material & Finish Selection",
-        "Furniture & Fixture Specification",
-        "Lighting Design",
-        "Color Scheme Development"
-      ]
-    },
-    {
-      icon: <Home className="w-12 h-12 text-green-500" />,
-      title: "Construction Management",
-      description:
-        "Ensure your project is completed on time, within budget, and to the highest quality standards with our comprehensive construction management services.",
-      features: [
-        "Project Scheduling & Planning",
-        "Budget Development & Control",
-        "Quality Assurance",
-        "Contractor Selection & Management",
-        "Progress Monitoring & Reporting"
-      ]
-    },
-    {
-      icon: <Ruler className="w-12 h-12 text-purple-500" />,
-      title: "Renovation Services",
-      description:
-        "Breathe new life into existing spaces with our renovation services. We specialize in transforming outdated or inefficient spaces into modern, functional environments.",
-      features: [
-        "Existing Condition Assessment",
-        "Renovation Planning & Design",
-        "Structural Modifications",
-        "System Upgrades",
-        "Historic Preservation"
-      ]
-    },
-    {
-      icon: <Pencil className="w-12 h-12 text-indigo-500" />,
-      title: "Sustainable Design",
-      description:
-        "Create environmentally responsible buildings and spaces that minimize resource consumption and environmental impact while maximizing comfort and efficiency.",
-      features: [
-        "Energy-Efficient Design",
-        "Sustainable Material Selection",
-        "Water Conservation Strategies",
-        "Indoor Air Quality Enhancement",
-        "Green Building Certification"
-      ]
-    },
-    {
-      icon: <Clock className="w-12 h-12 text-red-500" />,
-      title: "Project Planning",
-      description:
-        "Set your project up for success with comprehensive planning services that address all aspects of your building project before construction begins.",
-      features: [
-        "Feasibility Studies",
-        "Site Analysis & Selection",
-        "Programming & Space Requirements",
-        "Regulatory Review",
-        "Project Timeline Development"
-      ]
-    },
-    {
-      icon: <Users className="w-12 h-12 text-yellow-500" />,
-      title: "Collaborative Design",
-      description:
-        "Engage in a collaborative design process that brings together stakeholders, designers, and builders to create spaces that truly meet your needs.",
-      features: [
-        "Stakeholder Workshops",
-        "Design Charrettes",
-        "User Experience Research",
-        "Iterative Design Process",
-        "Feedback Integration"
-      ]
-    },
-    {
-      icon: <Shield className="w-12 h-12 text-cyan-500" />,
-      title: "Building Inspection & Analysis",
-      description:
-        "Ensure the safety, compliance, and performance of your building with our thorough inspection and analysis services.",
-      features: [
-        "Structural Assessments",
-        "Building Code Compliance",
-        "Energy Performance Analysis",
-        "Safety Inspections",
-        "Maintenance Planning"
-      ]
-    }
+    // {
+    //   icon: <Building className="w-12 h-12 text-amber-500" />,
+    //   title: "Architectural Design",
+    //   description:
+    //     "Transform your vision into reality with our innovative architectural design services. We create functional, aesthetically pleasing spaces that meet your specific needs and exceed your expectations.",
+    //   features: [
+    //     "Conceptual Design Development",
+    //     "3D Visualization & Rendering",
+    //     "Construction Documentation",
+    //     "Building Code Compliance",
+    //     "Sustainable Design Solutions"
+    //   ]
+    // },
+    // {
+    //   icon: <Layers className="w-12 h-12 text-blue-500" />,
+    //   title: "Interior Design",
+    //   description:
+    //     "Create beautiful, functional interior spaces that reflect your style and enhance your daily life. Our interior design services focus on optimizing space, aesthetics, and functionality.",
+    //   features: [
+    //     "Space Planning & Layout",
+    //     "Material & Finish Selection",
+    //     "Furniture & Fixture Specification",
+    //     "Lighting Design",
+    //     "Color Scheme Development"
+    //   ]
+    // },
+    // {
+    //   icon: <Home className="w-12 h-12 text-green-500" />,
+    //   title: "Construction Management",
+    //   description:
+    //     "Ensure your project is completed on time, within budget, and to the highest quality standards with our comprehensive construction management services.",
+    //   features: [
+    //     "Project Scheduling & Planning",
+    //     "Budget Development & Control",
+    //     "Quality Assurance",
+    //     "Contractor Selection & Management",
+    //     "Progress Monitoring & Reporting"
+    //   ]
+    // },
+    // {
+    //   icon: <Ruler className="w-12 h-12 text-purple-500" />,
+    //   title: "Renovation Services",
+    //   description:
+    //     "Breathe new life into existing spaces with our renovation services. We specialize in transforming outdated or inefficient spaces into modern, functional environments.",
+    //   features: [
+    //     "Existing Condition Assessment",
+    //     "Renovation Planning & Design",
+    //     "Structural Modifications",
+    //     "System Upgrades",
+    //     "Historic Preservation"
+    //   ]
+    // },
+    // {
+    //   icon: <Pencil className="w-12 h-12 text-indigo-500" />,
+    //   title: "Sustainable Design",
+    //   description:
+    //     "Create environmentally responsible buildings and spaces that minimize resource consumption and environmental impact while maximizing comfort and efficiency.",
+    //   features: [
+    //     "Energy-Efficient Design",
+    //     "Sustainable Material Selection",
+    //     "Water Conservation Strategies",
+    //     "Indoor Air Quality Enhancement",
+    //     "Green Building Certification"
+    //   ]
+    // },
+    // {
+    //   icon: <Clock className="w-12 h-12 text-red-500" />,
+    //   title: "Project Planning",
+    //   description:
+    //     "Set your project up for success with comprehensive planning services that address all aspects of your building project before construction begins.",
+    //   features: [
+    //     "Feasibility Studies",
+    //     "Site Analysis & Selection",
+    //     "Programming & Space Requirements",
+    //     "Regulatory Review",
+    //     "Project Timeline Development"
+    //   ]
+    // },
+    // {
+    //   icon: <Users className="w-12 h-12 text-yellow-500" />,
+    //   title: "Collaborative Design",
+    //   description:
+    //     "Engage in a collaborative design process that brings together stakeholders, designers, and builders to create spaces that truly meet your needs.",
+    //   features: [
+    //     "Stakeholder Workshops",
+    //     "Design Charrettes",
+    //     "User Experience Research",
+    //     "Iterative Design Process",
+    //     "Feedback Integration"
+    //   ]
+    // },
+    // {
+    //   icon: <Shield className="w-12 h-12 text-cyan-500" />,
+    //   title: "Building Inspection & Analysis",
+    //   description:
+    //     "Ensure the safety, compliance, and performance of your building with our thorough inspection and analysis services.",
+    //   features: [
+    //     "Structural Assessments",
+    //     "Building Code Compliance",
+    //     "Energy Performance Analysis",
+    //     "Safety Inspections",
+    //     "Maintenance Planning"
+    //   ]
+    // }
   ];
 
   return (
     <div className="bg-gradient-to-b from-gray-900 to-gray-800 py-20">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        <motion.div>
+          {/* initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold text-white mb-6">Our Design & Construction Services</h2>
+          className="text-center mb-16" */}
+        
+          {/* <h2 className="text-4xl font-bold text-white mb-6">Our Design & Construction Services</h2>
           <div className="w-24 h-1 bg-amber-500 mx-auto mb-6"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Comprehensive architectural and construction solutions to bring your vision to life with precision and excellence.
-          </p>
+          </p> */}
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
