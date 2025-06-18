@@ -1,14 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Building,
-  Layers,
-  Home,
-  Ruler,
-  Pencil,
-  X
-} from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -24,8 +14,6 @@ function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [selectedService, setSelectedService] = useState(null); // Selected service for details modal
-  const [showRegistrationForm, setShowRegistrationForm] = useState(false); // Show registration form modal
-  const [registrationServiceName, setRegistrationServiceName] = useState(""); // Holds name of selected service for registration
 
   const sliderRef = useRef(null);
   const heroRef = useRef(null);
@@ -33,7 +21,6 @@ function HeroSection() {
   const services = [
     {
       id: 1,
-      icon: <Building className="w-8 h-8 text-amber-500" aria-hidden="true" />,
       image: `${architectureImage}?height=200&width=300`,
       name: "Architectural Design",
       description: "Innovative architectural solutions tailored to your vision and requirements.",
@@ -49,7 +36,6 @@ function HeroSection() {
     },
     {
       id: 2,
-      icon: <Layers className="w-8 h-8 text-blue-500" aria-hidden="true"/>,
       image: `${interiorDesignImage}?height=200&width=300`,
       name: "Interior Design",
       description: "Transform your spaces with our expert interior design services.",
@@ -65,7 +51,6 @@ function HeroSection() {
     },
     {
       id: 3,
-      icon: <Home className="w-8 h-8 text-green-500" aria-hidden="true"/>,
       image: `${constructionImage}?height=200&width=300`,
       name: "Construction Management",
       description: "Comprehensive construction management from planning to completion.",
@@ -81,7 +66,6 @@ function HeroSection() {
     },
     {
       id: 4,
-      icon: <Ruler className="w-8 h-8 text-purple-500" aria-hidden="true"/>,
       image: `${renovationImage}?height=200&width=300`,
       name: "Renovation Services",
       description: "Revitalize your existing spaces with our expert renovation services.",
@@ -97,7 +81,6 @@ function HeroSection() {
     },
     {
       id: 5,
-      icon: <Pencil className="w-8 h-8 text-indigo-500" aria-hidden="true"/>,
       image: `${sustainableDesignImage}?height=200&width=300`,
       name: "Sustainable Design",
       description: "Eco-friendly design solutions for a greener future.",
@@ -113,12 +96,11 @@ function HeroSection() {
     }
   ];
 
-  // Calculate header height on mount and window resize
   useEffect(() => {
     const calculateHeaderHeight = () => {
       const header = document.querySelector("header");
       if (header) {
-        // Just keeping for consistency, even if not used
+        // Reserved for future use
       }
     };
 
@@ -146,7 +128,7 @@ function HeroSection() {
 
   useEffect(() => {
     let interval;
-    if (!isHovering && !selectedService && !showRegistrationForm) {
+    if (!isHovering && !selectedService) {
       interval = setInterval(() => {
         setCurrentIndex((prevIndex) =>
           prevIndex >= services.length - 4 ? 0 : prevIndex + 1
@@ -154,7 +136,7 @@ function HeroSection() {
       }, 5000);
     }
     return () => clearInterval(interval);
-  }, [services.length, isHovering, selectedService, showRegistrationForm]);
+  }, [services.length, isHovering, selectedService]);
 
   const visibleCards = 4;
 
@@ -191,12 +173,6 @@ function HeroSection() {
 
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
-                  to="/builddspace/contact"
-                  className="px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  Get Started
-                </Link>
-                <Link
                   to="/builddspace/services"
                   className="px-8 py-3 bg-transparent border border-white/30 text-white hover:bg-white/10 font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
                 >
@@ -219,7 +195,7 @@ function HeroSection() {
             className="mb-12"
           >
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Our Design & Construction Services</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Our Design &amp; Construction Services</h2>
 
               <div className="flex space-x-2">
                 <button
@@ -227,14 +203,14 @@ function HeroSection() {
                   className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-300 shadow-md"
                   aria-label="Previous services"
                 >
-                  <ChevronLeft className="w-6 h-6 text-gray-900" />
+                  {/* Removed icon */}
                 </button>
                 <button
                   onClick={slideRight}
                   className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-300 shadow-md"
                   aria-label="Next services"
                 >
-                  <ChevronRight className="w-6 h-6 text-gray-900" />
+                  {/* Removed icon */}
                 </button>
               </div>
             </div>
@@ -259,10 +235,8 @@ function HeroSection() {
                     tabIndex={0}
                     onKeyDown={e => { if (e.key === 'Enter') setSelectedService(service) }}
                   >
-                    <Link
-                      to={service.link}
-                      className="block bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:border-amber-500/30 h-full"
-                      onClick={e => e.preventDefault()} // Prevent navigation on click for demo modal
+                    <div
+                      className="block bg-white border border-gray-300 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 h-full"
                     >
                       <div className="relative h-40 overflow-hidden">
                         <img
@@ -270,17 +244,12 @@ function HeroSection() {
                           alt={service.name}
                           className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                          <div className="p-3 bg-white/10 backdrop-blur-sm rounded-full">
-                            {service.icon}
-                          </div>
-                        </div>
                       </div>
                       <div className="p-5">
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">{service.name}</h3>
                         <p className="text-gray-600 text-sm">{service.description}</p>
                       </div>
-                    </Link>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -314,7 +283,7 @@ function HeroSection() {
                   onClick={() => setSelectedService(null)}
                   aria-label="Close service details modal"
                 >
-                  <X className="w-6 h-6 text-white" />
+                  {/* Removed icon */}
                 </button>
                 <h3 id="modal-title" className="text-3xl font-bold text-amber-400 mb-4">
                   {selectedService.name} - Detailed Services
@@ -325,114 +294,16 @@ function HeroSection() {
                     <li key={idx}>{detail}</li>
                   ))}
                 </ul>
-                <div className="mt-6">
-                  <button
-                    onClick={() => {
-                      setRegistrationServiceName(selectedService.name); // Set the service name for registration
-                      setSelectedService(null); // Close the service details modal
-                      setShowRegistrationForm(true); // Open the registration form modal
-                    }}
-                    className="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-all duration-300"
-                  >
-                    Register for {selectedService.name}
-                  </button>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Registration Form Modal */}
-        <AnimatePresence>
-          {showRegistrationForm && (
-            <motion.div
-              className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-6 z-50"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setShowRegistrationForm(false)} // Close modal clicking outside
-              aria-modal="true"
-              role="dialog"
-            >
-              <motion.div
-                className="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full p-8 relative"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                onClick={e => e.stopPropagation()} // Prevent modal close on clicking inside
-              >
+                {/* Register button for all services */}
                 <button
-                  className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors"
-                  onClick={() => setShowRegistrationForm(false)}
-                  aria-label="Close registration form"
+                  className="mt-6 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-all duration-300"
+                  onClick={() => {
+                    // Handle registration logic here
+                    console.log(`Register for ${selectedService.name}`);
+                  }}
                 >
-                  <X className="w-6 h-6 text-white" />
+                  Register
                 </button>
-                <h3 className="text-3xl font-bold text-amber-400 mb-6">Service Registration</h3>
-                <form>
-                  <div className="mb-4">
-                    <label htmlFor="name" className="block text-gray-300 mb-2">Full Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      placeholder="Your full name"
-                      required
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="email" className="block text-gray-300 mb-2">Email Address</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      placeholder="Your email address"
-                      required
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="password" className="block text-gray-300 mb-2">Password</label>
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      placeholder="Create a password"
-                      required
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="phone" className="block text-gray-300 mb-2">Phone Number</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      placeholder="Your phone number"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="service" className="block text-gray-300 mb-2">Service</label>
-                    <input
-                      type="text"
-                      id="service"
-                      name="service"
-                      value={registrationServiceName} // Use the service name for registration
-                      readOnly
-                      className="w-full p-3 rounded bg-gray-800 text-white border border-gray-700"
-                    />
-                  </div>
-                  <div className="flex justify-end">
-                    <button
-                      type="submit"
-                      className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded transition-all duration-300"
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </form>
               </motion.div>
             </motion.div>
           )}

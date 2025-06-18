@@ -150,12 +150,7 @@ function HeroSection() {
               </p>
               
               <div className="mt-10 flex flex-wrap gap-4">
-                <Link
-                  to="/digidhvani/contact"
-                  className="px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  Get Started
-                </Link>
+               
                 <Link
                   to="/digidhvani/services"
                   className="px-8 py-3 bg-transparent border border-white/30 text-white hover:bg-white/10 font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
