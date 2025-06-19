@@ -276,7 +276,7 @@ export const FaqSection = () => {
                           value={formState.phone}
                           onChange={handleChange}
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                          placeholder="+1 (555) 987-6543"
+                          placeholder="+1234567890"
                         />
                       </div>
                       <div>
@@ -295,11 +295,11 @@ export const FaqSection = () => {
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
                         >
                           <option value="">Select Project Type</option>
-                          <option value="residential-interior">Residential Interior</option>
-                          <option value="commercial-interior">Commercial Interior</option>
-                          <option value="exterior-design">Exterior Design</option>
-                          <option value="bim-modeling">BIM Modeling</option>
-                          <option value="3d-visualization">3D Visualization</option>
+                          <option value="residential-interior">Architectural Design</option>
+                          <option value="commercial-interior">Interior Design</option>
+                          <option value="exterior-design">Construction Management</option>
+                          <option value="bim-modeling">Renovation Services</option>
+                          <option value="3d-visualization">Sustainable Design</option>
                           <option value="other">Other</option>
                         </select>
                       </div>
@@ -333,7 +333,7 @@ export const FaqSection = () => {
                   <div className="mt-6 text-center">
                     <p className="text-sm text-gray-500 flex items-center justify-center">
                       <MessageSquare className="w-4 h-4 mr-1" />
-                      Prefer a quick chat? Call us at +1 (555) 987-6543
+                      Prefer a quick chat? Call us at +91 9900081006
                     </p>
                   </div>
                 </motion.div>
