@@ -22,76 +22,67 @@ function HeroSection() {
     {
       id: 1,
       image: `${architectureImage}?height=200&width=300`,
-      name: "Architectural Design",
-      description: "Innovative architectural solutions tailored to your vision and requirements.",
+      name: " Structural Design & Engineering",
+      description: "Design of safe and stable load-bearing structures using civil engineering principles.",
       details: [
-        "Conceptual design and planning",
-        "3D modeling and visualization",
-        "Structural engineering integration",
-        "Sustainable and eco-friendly design practices",
-        "Building codes and regulatory compliance",
-        "Custom residential and commercial projects",
-        "Project feasibility studies and site analysis"
+        "Structural analysis and detailing",
+        "Load calculations and safety compliance",
+        "RCC & Steel design",
+        "Retrofitting and structural audits",
+        
       ],
     },
     {
       id: 2,
       image: `${interiorDesignImage}?height=200&width=300`,
-      name: "Interior Design",
-      description: "Transform your spaces with our expert interior design services.",
+      name: "Civil Construction Services",
+      description: "Execution of full-scale construction projects including groundwork, walls, and roofing.",
       details: [
-        "Space planning and layouts",
-        "Lighting design and fixture selection",
-        "Furniture and material sourcing",
-        "Custom cabinetry and millwork design",
-        "Color palette and finishing selections",
-        "Smart home integration",
-        "Project management from concept to completion"
+        "Residential, commercial, and industrial construction",
+        "Turnkey project execution",
+        "Foundation work",
+        "Concrete & masonry work",
+        "Plastering, tiling, and flooring",
+        
       ],
     },
     {
       id: 3,
       image: `${constructionImage}?height=200&width=300`,
-      name: "Construction Management",
-      description: "Comprehensive construction management from planning to completion.",
+      name: "Interior Fit-Outs",
+      description: "Interior design and finishing including furniture, ceilings, and aesthetic enhancements.",
       details: [
-        "Budget planning and cost control",
-        "Scheduling and timeline management",
-        "Quality assurance and safety compliance",
-        "Subcontractor coordination",
-        "Procurement and materials management",
-        "Site supervision and progress tracking",
-        "Final inspections and handover documentation"
+        "Interior design and execution",
+        "Modular furniture solutions",
+        "Lighting and false ceiling installation",
+        "Painting, carpentry, and finishing works",
+        
       ],
     },
     {
       id: 4,
       image: `${renovationImage}?height=200&width=300`,
-      name: "Renovation Services",
-      description: "Revitalize your existing spaces with our expert renovation services.",
+      name: "Site Development & Landscaping",
+      description: "Preparation and beautification of land including grading, paving, and planting.",
       details: [
-        "Structural modifications and expansions",
-        "Historic preservation and restoration",
-        "Energy efficient retrofits",
-        "Interior and exterior remodeling",
-        "Custom finishes and bespoke designs",
-        "Damage remediation and repairs",
-        "Permit acquisition and regulatory compliance"
+        "Land clearing and grading",
+        "Road and pathway construction",
+        "Boundary walls and fencing",
+        "Green zone planning and garden installation",
+        
       ],
     },
     {
       id: 5,
       image: `${sustainableDesignImage}?height=200&width=300`,
-      name: "Sustainable Design",
+      name: " Construction Technology Solutions",
       description: "Eco-friendly design solutions for a greener future.",
       details: [
-        "Passive solar design strategies",
-        "Energy efficient HVAC systems",
-        "Renewable energy integration",
-        "Water conservation and management",
-        "Sustainable materials sourcing",
-        "LEED certification consultancy",
-        "Waste reduction and recycling plans"
+        "Use of construction management software",
+        "Drone surveys & 3D mapping",
+        "IoT-enabled monitoring (for large sites)",
+        "Material tracking and workflow automation",
+        
       ],
     }
   ];

@@ -46,32 +46,32 @@ function Footer() {
             <ul className="space-y-2 mt-4">
               <li>
                 <Link to="/builddspace/services/architecture" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  Architectural Design
+                  Structural Design & Engineering
                 </Link>
               </li>
               <li>
                 <Link to="/builddspace/services/interior-design" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  Interior Design
+                  Civil Construction Services
                 </Link>
               </li>
               <li>
                 <Link to="/builddspace/services/construction" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  Construction Management
+                  Interior Fit-Outs
                 </Link>
               </li>
               <li>
                 <Link to="/builddspace/services/renovation" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  Renovation Services
+                  Site Development & Landscaping
                 </Link>
               </li>
               <li>
                 <Link to="/builddspace/services/sustainable-design" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  Sustainable Design
+                  Construction Technology Solutions
                 </Link>
               </li>
               <li>
                 <Link to="/builddspace/services" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  All Services
+                  
                 </Link>
               </li>
             </ul>
