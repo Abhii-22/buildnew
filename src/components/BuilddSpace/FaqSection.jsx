@@ -11,24 +11,24 @@ export const FaqSection = () => {
 
   const faqs = [
     {
-      question: "What services does BuilddSpace offer?",
+      question: "What is Startup Incubation at Buildspace?",
       answer:
-        "BuilddSpace offers a comprehensive range of architectural and construction services including architectural design, interior design, construction management, renovation services, sustainable design, project planning, collaborative design, and building inspection & analysis. Our integrated approach ensures seamless execution from concept to completion."
+        "Startup Incubation at Buildspace is a structured program that supports early-stage startups by providing mentorship, resources, infrastructure, and networking opportunities to turn their ideas into viable businesses."
     },
     {
-      question: "How long does a typical construction project take?",
+      question: " What services are provided in the incubation program?",
       answer:
-        "The timeline for construction projects varies significantly based on scope, complexity, and scale. Small renovation projects might take 2-3 months, while larger commercial or residential projects can take 6-18 months or more. During our initial consultation, we'll provide a detailed timeline specific to your project requirements."
+        "Services include workspace, mentorship, seed funding access, business development guidance, legal and financial support, and access to investors and industry networks."
     },
     {
-      question: "How do you ensure projects stay within budget?",
+      question: "What is Startup Support at Buildspace?",
       answer:
-        "Budget management is a core aspect of our process. We implement several strategies including detailed initial cost estimation, regular budget reviews, value engineering when necessary, transparent communication about potential cost impacts, and a proactive approach to identifying and addressing potential issues before they affect the budget."
+        "Startup Support includes a range of services offered to startups at various stages to help them grow sustainably, including technical, marketing, financial, and legal assistance."
     },
     {
-      question: "Do you handle all necessary permits and approvals?",
+      question: "What types of startup support are available?",
       answer:
-        "Yes, we manage the entire permitting process as part of our services. This includes preparing and submitting all required documentation, coordinating with local authorities, addressing any feedback or requirements from review boards, and ensuring all regulatory compliance is met before and during construction."
+        "Support includes pitch deck preparation, business model validation, prototyping, branding, go-to-market strategy, investor connections, and legal compliance."
     },
   ];
 

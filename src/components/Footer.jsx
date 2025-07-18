@@ -45,16 +45,16 @@ function Footer() {
             <h3 className="text-xl font-semibold text-gray-800">Explore Our Services</h3>
             <ul className="space-y-2 mt-4">
               <li>
-                <Link to="/builddspace/services/architecture" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  Structural Design & Engineering
+                <Link to="/builddspace/services/Startup Incubation" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
+                  Startup Incubation
                 </Link>
               </li>
               <li>
                 <Link to="/builddspace/services/interior-design" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  Civil Construction Services
+                  Startup support
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/builddspace/services/construction" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
                   Interior Fit-Outs
                 </Link>
@@ -73,7 +73,7 @@ function Footer() {
                 <Link to="/builddspace/services" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
                   
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 

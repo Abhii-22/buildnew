@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // Import images
 import bg_image from "@/assets/IMAGES/alex-kotliarskyi-QBpZGqEMsKg-unsplash.jpg";
-import architectureImage from "@/assets/IMAGES/getty-images-qk02f4TFFC4-unsplash.jpg";
-import interiorDesignImage from "@/assets/IMAGES/getty-images-GWy4HmlGraI-unsplash.jpg";
+import StartupIncubation from "@/assets/IMAGES/campaign-creators-gMsnXqILjp4-unsplash (3).jpg";
+import StartupSupport from "@/assets/IMAGES/pexels-yankrukov-7792886.jpg";
 import constructionImage from "@/assets/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg";
 import renovationImage from "@/assets/IMAGES/getty-images-X-lDEMCZBz0-unsplash.jpg";
 import sustainableDesignImage from "@/assets/IMAGES/getty-images-KD_fT_T4D24-unsplash.jpg";
@@ -21,22 +21,22 @@ function HeroSection() {
   const services = [
     {
       id: 1,
-      image: `${architectureImage}?height=200&width=300`,
-      name: " Structural Design & Engineering",
-      description: "Design of safe and stable load-bearing structures using civil engineering principles.",
+      image: `${StartupIncubation}?height=200&width=300`,
+      name: " Startup Incubation",
+      description: "Provides early-stage startups with workspace, mentorship, technical support, and resources to develop, launch, and scale their business ideas.",
       details: [
-        "Structural analysis and detailing",
-        "Load calculations and safety compliance",
-        "RCC & Steel design",
-        "Retrofitting and structural audits",
+        "Mentorship Access :Connects startups with experienced mentors in tech, business, and product development.",
+        "Workspace & Infrastructure :Offers physical or virtual office space with essential tools and resources.",
+        "Product Development Support :Assists in building and refining MVPs through technical guidance.",
+        
         
       ],
     },
     {
       id: 2,
-      image: `${interiorDesignImage}?height=200&width=300`,
-      name: "Civil Construction Services",
-      description: "Execution of full-scale construction projects including groundwork, walls, and roofing.",
+      image: `${StartupSupport}?height=200&width=300`,
+      name: "Startup Support",
+      description: "Helps founders assess and refine their startup ideas based on market demand.",
       details: [
         "Residential, commercial, and industrial construction",
         "Turnkey project execution",
@@ -46,45 +46,45 @@ function HeroSection() {
         
       ],
     },
-    {
-      id: 3,
-      image: `${constructionImage}?height=200&width=300`,
-      name: "Interior Fit-Outs",
-      description: "Interior design and finishing including furniture, ceilings, and aesthetic enhancements.",
-      details: [
-        "Interior design and execution",
-        "Modular furniture solutions",
-        "Lighting and false ceiling installation",
-        "Painting, carpentry, and finishing works",
+    // {
+    //   id: 3,
+    //   image: `${constructionImage}?height=200&width=300`,
+    //   name: "Interior Fit-Outs",
+    //   description: "Interior design and finishing including furniture, ceilings, and aesthetic enhancements.",
+    //   details: [
+    //     "Interior design and execution",
+    //     "Modular furniture solutions",
+    //     "Lighting and false ceiling installation",
+    //     "Painting, carpentry, and finishing works",
         
-      ],
-    },
-    {
-      id: 4,
-      image: `${renovationImage}?height=200&width=300`,
-      name: "Site Development & Landscaping",
-      description: "Preparation and beautification of land including grading, paving, and planting.",
-      details: [
-        "Land clearing and grading",
-        "Road and pathway construction",
-        "Boundary walls and fencing",
-        "Green zone planning and garden installation",
+    //   ],
+    // },
+    // {
+    //   id: 4,
+    //   image: `${renovationImage}?height=200&width=300`,
+    //   name: "Site Development & Landscaping",
+    //   description: "Preparation and beautification of land including grading, paving, and planting.",
+    //   details: [
+    //     "Land clearing and grading",
+    //     "Road and pathway construction",
+    //     "Boundary walls and fencing",
+    //     "Green zone planning and garden installation",
         
-      ],
-    },
-    {
-      id: 5,
-      image: `${sustainableDesignImage}?height=200&width=300`,
-      name: " Construction Technology Solutions",
-      description: "Eco-friendly design solutions for a greener future.",
-      details: [
-        "Use of construction management software",
-        "Drone surveys & 3D mapping",
-        "IoT-enabled monitoring (for large sites)",
-        "Material tracking and workflow automation",
+    //   ],
+    // },
+    // {
+    //   id: 5,
+    //   image: `${sustainableDesignImage}?height=200&width=300`,
+    //   name: " Construction Technology Solutions",
+    //   description: "Eco-friendly design solutions for a greener future.",
+    //   details: [
+    //     "Use of construction management software",
+    //     "Drone surveys & 3D mapping",
+    //     "IoT-enabled monitoring (for large sites)",
+    //     "Material tracking and workflow automation",
         
-      ],
-    }
+    //   ],
+    // }
   ];
 
   useEffect(() => {
@@ -129,7 +129,7 @@ function HeroSection() {
     return () => clearInterval(interval);
   }, [services.length, isHovering, selectedService]);
 
-  const visibleCards = 4;
+  const visibleCards = 2; // Show 2 cards at a time
 
   return (
     <>
@@ -142,7 +142,7 @@ function HeroSection() {
             backgroundSize: "cover",
           }}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-75"></div>
+          <div className="absolute inset-0 bg-black bg-opacity-30"></div>
         </div>
 
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/20 via-black/30 to-black/30"></div>
@@ -186,7 +186,10 @@ function HeroSection() {
             className="mb-12"
           >
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Our Design &amp; Construction Services</h2>
+
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 w-full text-center">
+                Our Design &amp; Construction Services
+              </h2>
 
               <div className="flex space-x-2">
                 <button
@@ -213,14 +216,14 @@ function HeroSection() {
               onMouseLeave={() => setIsHovering(false)}
             >
               <div
-                className="flex transition-transform duration-500 ease-in-out"
+                className="flex justify-center transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` }}
               >
                 {services.map((service) => (
                   <div
                     key={service.id}
-                    className="min-w-[25%] px-3 transition-all duration-300 cursor-pointer"
-                    onClick={() => setSelectedService(service)} // Open detailed modal on click
+                    className="min-w-[260px] max-w-[320px] px-4 transition-all duration-300 cursor-pointer flex-shrink-0"
+                    onClick={() => setSelectedService(service)}
                     aria-label={`Show detailed services for ${service.name}`}
                     role="button"
                     tabIndex={0}
@@ -228,8 +231,9 @@ function HeroSection() {
                   >
                     <div
                       className="block bg-white border border-gray-300 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 h-full"
+                      style={{ minHeight: "300px", maxHeight: "370px" }}
                     >
-                      <div className="relative h-40 overflow-hidden">
+                      <div className="relative h-36 overflow-hidden">
                         <img
                           src={service.image}
                           alt={service.name}
