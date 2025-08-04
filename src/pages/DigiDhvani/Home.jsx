@@ -1,7 +1,7 @@
 import React from "react";
 import HeroSection from "@/components/DigiDhvani/HeroSection";
 import ServicesComponent from "@/components/DigiDhvani/Services";
-import { FaqSection } from "@/components/DigiDhvani/FaqSection";
+import FaqSection from "@/components/DigiDhvani/FaqSection";
 
 const Home = () => {
   return (

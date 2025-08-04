@@ -1,130 +1,35 @@
 import { useState, useEffect } from "react"
-import { Link, NavLink, useLocation } from "react-router-dom"
-import { ChevronDown } from "lucide-react"
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import logo from "@/assets/Logos/Medini_logo.png"
-import bimLogo from "@/assets/NAVBAR/BIM Construct.png"
-import eduphygitalLogo from "@/assets/NAVBAR/Eduphygital White.png"
 import buildspaceLogo from "@/assets/NAVBAR/Builddspace Whte.png"
-import digidhvaniLogo from "@/assets/NAVBAR/Digidhvani.jpeg"
-import autodeskLogo from "@/assets/NAVBAR/Autodesk ALP White.png"
-import solidworksLogo from "@/assets/NAVBAR/Solidworks White.png"
-import bentleyLogo from "@/assets/NAVBAR/Bentley White.png"
-import sketchupLogo from "@/assets/NAVBAR/Sketch White.png"
-import coursesData from '@/components/MediniSchool/courses.json';
 
 const Header = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const [lastScrollY, setLastScrollY] = useState(0)
   const [showLinks, setShowLinks] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
 
-  // get all Courses
-  const courseCategories = [
-    {
-      name: "AutoDesk",
-      categories: coursesData.courseProviders.find((p) => p.id === "AUTODESK")?.categories || [],
-    },
-    {
-      name: "Bentley Systems",
-      categories: coursesData.courseProviders.find((p) => p.id === "BENTLEY")?.categories || [],
-    },
-    {
-      name: "Dassault",
-      categories: coursesData.courseProviders.find((p) => p.id === "DASSAULT")?.categories || [],
-    },
-    {
-      name: "Others",
-      categories: coursesData.courseProviders.find((p) => p.id === "OTHER")?.categories || [],
-    },
-    {
-      name: "Programming",
-      categories: [
-        {
-          name: "Web & App Development",
-          courses: [
-            { id: "java-fullstack", name: "Java Fullstack" },
-            { id: "python-fullstack", name: "Python Fullstack" },
-            { id: "mern-stack", name: "MERN Stack" },
-            { id: "cloud-application", name: "Cloud Application Development" },
-          ],
-        },
-      ],
-    },
-  ]
+
 
   useEffect(() => {
-    const controlVisibility = () => {
-      if (typeof window !== "undefined") {
-        if (window.scrollY > lastScrollY && window.scrollY > 100) {
-          setShowLinks(false)
-        } else {
-          setShowLinks(true)
-        }
-        setLastScrollY(window.scrollY)
-      }
-    }
-
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
 
-    window.addEventListener("scroll", controlVisibility)
     window.addEventListener("scroll", handleScroll)
 
     return () => {
-      window.removeEventListener("scroll", controlVisibility)
       window.removeEventListener("scroll", handleScroll)
     }
-  }, [lastScrollY])
+  }, [])
 
-  const isMediniSchool = location.pathname.includes("medinischoolofdesign")
-  const isBimConstruct = location.pathname.includes("bim_construct")
-  const isHome = location.pathname.includes("/")
-  const isTeaMech = location.pathname.includes("teamech")
-  const isTechVritti = location.pathname.includes("techvritti")
-  const isEduphygital = location.pathname.includes("eduphygital")
-  const isBuildspace = location.pathname.includes("builddspace")
-  const isDigiDhvani = location.pathname.includes("digidhvani")
-  const isCourse = location.pathname.includes("/courses/")
 
-  const getCourseProviderLogo = () => {
-    const path = location.pathname.toLowerCase()
-    if (
-      path.includes("autocad") ||
-      path.includes("revit") ||
-      path.includes("fusion") ||
-      path.includes("maya") ||
-      path.includes("3ds-max") ||
-      path.includes("civil-3d") ||
-      path.includes("navisworks") ||
-      path.includes("infrawork")
-    ) {
-      return autodeskLogo
-    }
-    if (path.includes("solidworks") || path.includes("solid-works")) {
-      return solidworksLogo
-    }
-    if (
-      path.includes("bentley") ||
-      path.includes("microstation") ||
-      path.includes("openroads") ||
-      path.includes("openflows") ||
-      path.includes("staad-pro")
-    ) {
-      return bentleyLogo
-    }
-    if (path.includes("sketchup") || path.includes("sketch-up")) {
-      return sketchupLogo
-    }
-    return autodeskLogo
-  }
 
   const phoneNumber = "919686311005"
   const handleClick = (e) => {
@@ -142,41 +47,12 @@ const Header = () => {
         transition={{ duration: 0.3 }}
       >
         <div className="container mx-auto flex items-center justify-between p-4 px-4">
-          {/* Logo and optionally course provider logos */}
-          <NavLink to="/" className="flex items-center">
-            <img src={logo} alt="Medini" className="h-14 mr-2" />
-            {isCourse && (
-              <>
-                <div className="h-8 w-px bg-white mx-2"></div>
-                <img src={getCourseProviderLogo()} alt="Course Provider" className="h-8 ml-1" />
-              </>
-            )}
-            {isBimConstruct && (
-              <>
-                <div className="h-8 w-px bg-white mx-2"></div>
-                <img src={bimLogo} alt="BIM Construct" className="h-6 ml-1" />
-              </>
-            )}
-            {isEduphygital && (
-              <>
-                <div className="h-8 w-px bg-white mx-2"></div>
-                <img src={eduphygitalLogo} alt="Eduphygital" className="h-8 ml-1" />
-              </>
-            )}
-            {isBuildspace && (
-              <>
-                <div className="h-8 w-px bg-white mx-2"></div>
-                <img src={buildspaceLogo} alt="Buildspace" className="h-8 ml-1" />
-              </>
-            )}
-            {isDigiDhvani && (
-              <>
-                <div className="h-8 w-px bg-white mx-2"></div>
-                <img src={digidhvaniLogo} alt="DigiDhvani" className="h-8 ml-1" />
-              </>
-            )}
-            {isTechVritti && <p className="font-playfair">TechVritti</p>}
-          </NavLink>
+                     {/* Logo */}
+           <NavLink to="/" className="flex items-center">
+             <img src={logo} alt="Medini" className="h-14 mr-2" />
+             <div className="h-8 w-px bg-white mx-2"></div>
+             <img src={buildspaceLogo} alt="Buildspace" className="h-8 ml-1" />
+           </NavLink>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
@@ -243,33 +119,33 @@ const Header = () => {
                     <Link to="/">Home</Link>
                   </SheetTrigger>
                 </Button>
-                {isMediniSchool && (
-                  <Button variant="outline" className="w-full flex items-center">
+                
+                                 <Button variant="outline" className="w-full flex items-center">
+                   <SheetTrigger asChild className="md:hidden">
+                     <Link to="/builddspace">About</Link>
+                   </SheetTrigger>
+                 </Button>
+                 <Button variant="outline" className="w-full flex items-center">
+                   <SheetTrigger asChild className="md:hidden">
+                     <Link to="/builddspace">Services</Link>
+                   </SheetTrigger>
+                 </Button>
+                                   <Button variant="outline" className="w-full flex items-center">
                     <SheetTrigger asChild className="md:hidden">
-                      <Link to="/courses">Courses</Link>
+                      <button 
+                        onClick={() => {
+                          // Scroll to contact section
+                          const contactSection = document.querySelector('#contact');
+                          if (contactSection) {
+                            contactSection.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
+                        className="w-full text-left"
+                      >
+                        Contact
+                      </button>
                     </SheetTrigger>
                   </Button>
-                )}
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/about">About</Link>
-                  </SheetTrigger>
-                </Button>
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/blog">Blog</Link>
-                  </SheetTrigger>
-                </Button>
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/awards">Awards</Link>
-                  </SheetTrigger>
-                </Button>
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/contact">Contact</Link>
-                  </SheetTrigger>
-                </Button>
               </div>
             </SheetContent>
           </Sheet>
@@ -277,26 +153,81 @@ const Header = () => {
       </motion.nav>
 
       {/* Links */}
-      <AnimatePresence>
-        {showLinks && (
-          <motion.div
-            className="hidden bg-[#406d6e] text-white shadow-md md:flex"
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -50, opacity: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 30,
-              duration: 0.3,
-            }}
-          >
+      <motion.div
+        className="hidden bg-[#406d6e] text-white shadow-md md:flex"
+        initial={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+          duration: 0.3,
+        }}
+      >
             <div className="container mx-auto overflow-x-auto hide-scrollbar">
-              {/* Secondary navbar links removed as requested; bar remains empty */}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <div className="flex items-center justify-between px-4 py-3">
+                <div className="flex items-center space-x-8">
+                                     <button 
+                     onClick={() => {
+                       // Scroll to top of the page
+                       window.scrollTo({ top: 0, behavior: 'smooth' });
+                     }}
+                     className="text-sm font-medium transition-colors hover:text-amber-300 text-white"
+                   >
+                     Home
+                   </button>
+                                     <button 
+                     onClick={() => {
+                       // Scroll to FAQ section (which contains about information)
+                       const faqSection = document.querySelector('#faq');
+                       if (faqSection) {
+                         faqSection.scrollIntoView({ behavior: 'smooth' });
+                       } else {
+                         // Fallback: scroll to top
+                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                       }
+                     }}
+                     className="text-sm font-medium transition-colors hover:text-amber-300 text-white"
+                   >
+                     About
+                   </button>
+                                     <button 
+                     onClick={() => {
+                       // Scroll to services section
+                       const servicesSection = document.querySelector('#services');
+                       if (servicesSection) {
+                         servicesSection.scrollIntoView({ behavior: 'smooth' });
+                       }
+                     }}
+                     className="text-sm font-medium transition-colors hover:text-amber-300 text-white"
+                   >
+                     Services
+                   </button>
+                                     <button 
+                     onClick={() => {
+                       // Scroll to contact section
+                       const contactSection = document.querySelector('#contact');
+                       if (contactSection) {
+                         contactSection.scrollIntoView({ behavior: 'smooth' });
+                       }
+                     }}
+                     className="text-sm font-medium transition-colors hover:text-amber-300 text-white"
+                   >
+                     Contact
+                   </button>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <span className="text-sm text-gray-300">|</span>
+                  <a 
+                    href="tel:+919686311005" 
+                    className="text-sm font-medium transition-colors hover:text-amber-300 text-white"
+                  >
+                    +91 96863 11005
+                  </a>
+                </div>
+              </div>
+                         </div>
+           </motion.div>
 
       {/* Spacer to push content below the header */}
       <div className={`h-${showLinks ? "28" : "16"} transition-all duration-300`}></div>

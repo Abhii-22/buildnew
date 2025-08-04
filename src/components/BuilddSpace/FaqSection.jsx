@@ -124,7 +124,7 @@ export const FaqSection = () => {
         </div>
 
         {/* Get in Touch Section */}
-        <section className="py-20 bg-white">
+        <section id="contact" className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12">

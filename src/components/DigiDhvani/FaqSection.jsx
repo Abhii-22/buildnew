@@ -1,70 +1,54 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import React, { useState } from "react"
+import { motion } from "framer-motion"
 
-export const FaqSection = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  const toggleFaq = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
+const FaqSection = () => {
+  const [openFaq, setOpenFaq] = useState(null)
 
   const faqs = [
     {
-      question: "What is digital marketing and why is it important?",
-      answer:
-        "Digital marketing encompasses all marketing efforts that use electronic devices or the internet. It includes channels like search engines, social media, email, and websites to connect with current and prospective customers. It's important because it allows businesses to reach a larger audience than traditional marketing, target specific demographics, and measure success accurately in real-time."
+      question: "What is Digital Voice Technology?",
+      answer: "Digital Voice Technology encompasses various technologies that process, analyze, and enhance human speech. This includes voice recognition, speech-to-text conversion, voice analytics, and digital signal processing to improve communication and productivity."
     },
     {
-      question: "How long does it take to see results from SEO?",
-      answer:
-        "SEO is a long-term strategy that typically takes 3-6 months to start showing significant results. The timeline depends on various factors including your website's current state, competition in your industry, and the aggressiveness of your SEO strategy. While some improvements may be visible sooner, sustainable rankings and traffic growth require consistent effort over time."
+      question: "How accurate is your speech-to-text conversion?",
+      answer: "Our speech-to-text conversion achieves 95%+ accuracy in ideal conditions and 85%+ accuracy in real-world environments with background noise. We use advanced AI models trained on diverse speech patterns and accents."
     },
     {
-      question: "What social media platforms should my business be on?",
-      answer:
-        "The right social media platforms for your business depend on your target audience, industry, and marketing goals. Rather than trying to maintain a presence on every platform, it's more effective to focus on the ones where your audience is most active. We can help you identify the most relevant platforms for your business and develop strategies to engage effectively with your audience."
+      question: "Do you support multiple languages?",
+      answer: "Yes, we support over 50 languages including English, Hindi, Spanish, French, German, Chinese, Japanese, and many more. Our systems are trained on native speakers for optimal accuracy."
     },
     {
-      question: "How much should I budget for digital marketing?",
-      answer:
-        "Digital marketing budgets vary widely depending on your business size, goals, industry, and competition. As a general guideline, businesses typically allocate 7-10% of their revenue to marketing. We work with clients to develop customized strategies that align with their budget constraints while maximizing ROI. Our services are scalable and can be adjusted as your business grows."
+      question: "Can I integrate voice technology into my existing applications?",
+      answer: "Absolutely! We provide APIs and SDKs that can be easily integrated into your existing web, mobile, or desktop applications. Our solutions are designed to work seamlessly with various platforms and frameworks."
     },
     {
-      question: "Do I need a new website to start digital marketing?",
-      answer:
-        "Not necessarily. While having a modern, mobile-friendly website is important for digital marketing success, we can often work with your existing website and recommend improvements over time. We'll evaluate your current website's performance and suggest updates that will enhance user experience and conversion rates while implementing other digital marketing strategies."
+      question: "What kind of voice analytics do you offer?",
+      answer: "Our voice analytics include emotion detection, speaker identification, sentiment analysis, call quality metrics, and performance analytics. These insights help improve customer service and communication effectiveness."
     },
     {
-      question: "How do you measure the success of digital marketing campaigns?",
-      answer:
-        "We measure success through various metrics aligned with your business goals, including website traffic, conversion rates, engagement metrics, lead generation, and ultimately, ROI. We use advanced analytics tools to track performance and provide regular reports with actionable insights. Our approach focuses on data-driven decision making to continuously optimize your campaigns."
-    },
-    {
-      question: "What makes DigiDhvani different from other digital marketing agencies?",
-      answer:
-        "DigiDhvani stands out through our personalized approach, transparent reporting, and focus on measurable results. We don't believe in one-size-fits-all solutions; instead, we develop customized strategies based on your unique business needs and goals. Our team stays current with the latest digital marketing trends and technologies to ensure your business maintains a competitive edge."
-    },
-    {
-      question: "Can digital marketing work for my small business?",
-      answer:
-        "Absolutely! Digital marketing is particularly valuable for small businesses because it provides cost-effective ways to reach targeted audiences. Unlike traditional marketing, digital strategies can be scaled according to your budget and allow you to compete with larger companies. We specialize in helping small businesses develop effective digital marketing strategies that maximize their resources."
+      question: "Is my voice data secure and private?",
+      answer: "Yes, we prioritize data security and privacy. All voice data is encrypted, processed securely, and we comply with GDPR and other privacy regulations. We never share or sell your voice data to third parties."
     }
-  ];
+  ]
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index)
+  }
 
   return (
-    <div className="bg-gradient-to-b from-gray-800 to-gray-900 py-20">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-white mb-6">Frequently Asked Questions</h2>
-          <div className="w-24 h-1 bg-amber-500 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Find answers to common questions about our digital marketing services and how we can help your business grow online.
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Get answers to common questions about our digital voice solutions
           </p>
         </motion.div>
 
@@ -73,56 +57,61 @@ export const FaqSection = () => {
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="mb-6"
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="mb-4"
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className={`w-full flex justify-between items-center p-6 rounded-lg text-left transition-all duration-300 ${
-                  activeIndex === index
-                    ? "bg-amber-500 text-white"
-                    : "bg-gray-800/50 text-white hover:bg-gray-700/50"
-                }`}
+                className="w-full text-left bg-gray-50 hover:bg-gray-100 p-6 rounded-lg transition-all duration-300"
               >
-                <span className="text-lg font-semibold">{faq.question}</span>
-                {activeIndex === index ? (
-                  <ChevronUp className="w-5 h-5 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 flex-shrink-0" />
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {faq.question}
+                  </h3>
+                  <span className={`text-green-600 text-2xl transition-transform duration-300 ${
+                    openFaq === index ? 'rotate-45' : ''
+                  }`}>
+                    +
+                  </span>
+                </div>
+                {openFaq === index && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 text-gray-600"
+                  >
+                    {faq.answer}
+                  </motion.div>
                 )}
               </button>
-              {activeIndex === index && (
-                <div className="bg-gray-800/30 border border-gray-700 p-6 rounded-b-lg mt-1">
-                  <p className="text-gray-300">{faq.answer}</p>
-                </div>
-              )}
             </motion.div>
           ))}
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
           className="text-center mt-16"
         >
-          <p className="text-xl text-gray-300 mb-8">
-            Still have questions? We're here to help!
-          </p>
-          <a
-            href="/digidhvani/contact"
-            className="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-all duration-300"
-          >
-            Contact Us
-            <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
+          <div className="bg-green-50 rounded-xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Still Have Questions?
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Can't find the answer you're looking for? Contact our team for personalized assistance.
+            </p>
+            <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300">
+              Contact Us
+            </button>
+          </div>
         </motion.div>
       </div>
-    </div>
-  );
-};
+    </section>
+  )
+}
 
-export default FaqSection;
+export default FaqSection 

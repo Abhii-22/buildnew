@@ -134,7 +134,7 @@ function HeroSection() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden h-[70vh] flex items-center" ref={heroRef}>
+      <section className="relative overflow-hidden h-[100vh] flex items-center" ref={heroRef}>
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center z-0 transition-opacity duration-700"
           style={{
@@ -146,6 +146,22 @@ function HeroSection() {
         </div>
 
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/20 via-black/30 to-black/30"></div>
+
+        {/* Top Right Text */}
+        <div className="absolute top-24 right-8 z-20">
+          <div className="text-right">
+            <div className="text-white font-bold text-sm md:text-base lg:text-lg leading-tight">
+              <span className="text-red-500">B</span><span className="text-white">UILDING </span>
+              <span className="text-red-500">I</span><span className="text-white">NNOVATION </span>
+              <span className="text-red-500">L</span><span className="text-white">EARNING</span>
+            </div>
+            <div className="text-white font-bold text-sm md:text-base lg:text-lg leading-tight mt-1">
+              <span className="text-red-500">D</span><span className="text-white">ESIGN & </span>
+              <span className="text-red-500">D</span><span className="text-white">EVELOPMENT </span>
+              <span className="text-red-500">S</span><span className="text-white">PACE</span>
+            </div>
+          </div>
+        </div>
 
         <div className="container mx-auto px-4 relative z-10 pt-16">
           <motion.div
@@ -163,12 +179,17 @@ function HeroSection() {
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
-                <Link
-                  to="/builddspace/services"
+                <button
+                  onClick={() => {
+                    const servicesSection = document.querySelector('#services');
+                    if (servicesSection) {
+                      servicesSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                   className="px-8 py-3 bg-transparent border border-white/30 text-white hover:bg-white/10 font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
                 >
                   Explore Services
-                </Link>
+                </button>
               </div>
             </div>
             <div className="lg:w-1/2"></div>
@@ -177,7 +198,7 @@ function HeroSection() {
       </section>
 
       {/* Services Slider Section */}
-      <section className="bg-white py-20 relative">
+      <section id="services" className="bg-white py-20 relative">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0 }}
@@ -191,22 +212,7 @@ function HeroSection() {
                 Our Design &amp; Construction Services
               </h2>
 
-              <div className="flex space-x-2">
-                <button
-                  onClick={slideLeft}
-                  className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-300 shadow-md"
-                  aria-label="Previous services"
-                >
-                  {/* Removed icon */}
-                </button>
-                <button
-                  onClick={slideRight}
-                  className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-300 shadow-md"
-                  aria-label="Next services"
-                >
-                  {/* Removed icon */}
-                </button>
-              </div>
+              
             </div>
 
             <div
