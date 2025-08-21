@@ -75,7 +75,7 @@ export const FaqSection = () => {
   };
 
   return (
-    <div className="bg-white py-20">
+    <div className="bg-white py-0">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -86,11 +86,11 @@ export const FaqSection = () => {
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
           <div className="w-24 h-1 bg-amber-500 mx-auto mb-6"></div>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Find answers to common questions about our architectural and construction services and how we bring your vision to life.
+            Find answers to common questions about our startup incubation and support services.
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto mb-20">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -122,6 +122,8 @@ export const FaqSection = () => {
             </motion.div>
           ))}
         </div>
+
+
 
         {/* Get in Touch Section */}
         <section id="contact" className="py-20 bg-white">
@@ -160,7 +162,7 @@ export const FaqSection = () => {
                       {
                         icon: <MapPin className="w-5 h-5" />,
                         title: "Visit Our Company",
-                        content: "No. 2943/E,3rd Floor, 40, Service Rd, opposite Shri Maruthi Mandira, Hosahalli Extension, Vijayanagar, Bengaluru, Karnataka 560040",
+                        content: "#89, 18th main, 15th Cross, Near Post office, MRCR Layout, Vijayanagar, Bangalore",
                         link: "https://maps.google.com",
                       },
                     ].map((item, index) => (
@@ -333,7 +335,7 @@ export const FaqSection = () => {
                   <div className="mt-6 text-center">
                     <p className="text-sm text-gray-500 flex items-center justify-center">
                       <MessageSquare className="w-4 h-4 mr-1" />
-                      Prefer a quick chat? Call us at +91 9900081006
+                     
                     </p>
                   </div>
                 </motion.div>

@@ -8,7 +8,10 @@ import StartupIncubation from "@/assets/IMAGES/campaign-creators-gMsnXqILjp4-uns
 import StartupSupport from "@/assets/IMAGES/pexels-yankrukov-7792886.jpg";
 import constructionImage from "@/assets/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg";
 import renovationImage from "@/assets/IMAGES/getty-images-X-lDEMCZBz0-unsplash.jpg";
+
 import sustainableDesignImage from "@/assets/IMAGES/getty-images-KD_fT_T4D24-unsplash.jpg";
+import workSpaceImage from "@/assets/IMAGES/kyle-gregory-devaras-6RTM8EsD1T8-unsplash.jpg";
+import builddspaceAboutImg from "@/assets/IMAGES/Builddspace about.png";
 
 function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -44,6 +47,17 @@ function HeroSection() {
         "Concrete & masonry work",
         "Plastering, tiling, and flooring",
         
+      ],
+    },
+    {
+      id: 3,
+      image: `${workSpaceImage}?height=200&width=300`,
+      name: "Work Space",
+      description: "Flexible and modern workspaces to foster collaboration and innovation.",
+      details: [
+        "Dedicated desks and private offices",
+        "High-speed internet and amenities",
+        "Access to meeting rooms and event spaces",
       ],
     },
     // {
@@ -147,21 +161,21 @@ function HeroSection() {
 
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/20 via-black/30 to-black/30"></div>
 
-        {/* Top Right Text */}
-        <div className="absolute top-24 right-8 z-20">
-          <div className="text-right">
-            <div className="text-white font-bold text-sm md:text-base lg:text-lg leading-tight">
-              <span className="text-red-500">B</span><span className="text-white">UILDING </span>
-              <span className="text-red-500">I</span><span className="text-white">NNOVATION </span>
-              <span className="text-red-500">L</span><span className="text-white">EARNING</span>
-            </div>
-            <div className="text-white font-bold text-sm md:text-base lg:text-lg leading-tight mt-1">
-              <span className="text-red-500">D</span><span className="text-white">ESIGN & </span>
-              <span className="text-red-500">D</span><span className="text-white">EVELOPMENT </span>
-              <span className="text-red-500">S</span><span className="text-white">PACE</span>
-            </div>
-          </div>
-        </div>
+                 {/* Center Right Text */}
+         <div className="absolute top-1/3 right-12 transform -translate-y-1/2 z-20">
+           <div className="text-right">
+             <div className="text-white font-bold text-base md:text-lg lg:text-xl xl:text-2xl leading-tight">
+               <span className="text-red-500">BU</span><span className="text-white">ILDING </span>
+               <span className="text-red-500">I</span><span className="text-white">NNOVATION </span>
+               <span className="text-red-500">L</span><span className="text-white">EARNING</span>
+             </div>
+             <div className="text-white font-bold text-base md:text-lg lg:text-xl xl:text-2xl leading-tight mt-1">
+               <span className="text-red-500">D</span><span className="text-white">ESIGN & </span>
+               <span className="text-red-500">D</span><span className="text-white">EVELOPMENT </span>
+               <span className="text-red-500">S</span><span className="text-white">PACE</span>
+             </div>
+           </div>
+         </div>
 
         <div className="container mx-auto px-4 relative z-10 pt-16">
           <motion.div
@@ -175,7 +189,7 @@ function HeroSection() {
                 Crafting Spaces That Inspire
               </h1>
               <p className="text-xl md:text-2xl text-gray-300">
-                Innovative architectural and design solutions to transform your vision into reality
+              We incubate, fund, and scale startups into market leaders - we fastrack your startup’s success .
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
@@ -194,6 +208,88 @@ function HeroSection() {
             </div>
             <div className="lg:w-1/2"></div>
           </motion.div>
+        </div>
+
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 bg-white" id="about">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-6"
+              >
+                <div className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
+                  About Us
+                </div>
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                  Where startups accelerate.
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  The 1% of startups don’t grow by accident. They’re engineered. Our incubator combines Mentorship, Driven scaling frameworks, and access to global investors. If your startup has traction, we’ll help you run your numbers.
+                </p>
+                <div className="space-y-6 mt-8">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Our Vision</h3>
+                    <p className="text-gray-600">
+                      We're building the Blackstone of startup acceleration – a new paradigm where geography no longer determines destiny.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Our Mission</h3>
+                    <p className="text-gray-600">
+                      To engineer outlier startups into market leaders through data, mentorship, and ruthless execution.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+              {/* Right Column - Image */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl p-8 shadow-xl">
+                  <div className="relative">
+                    {/* Main Image Container */}
+                    <div className="bg-white rounded-xl p-6 shadow-lg">
+                      <img
+                        src={builddspaceAboutImg}
+                        alt="BuilddSpace Innovation Hub"
+                        className="w-full h-auto rounded-lg object-cover"
+                        onError={e => {
+                          e.target.style.display = 'none';
+                          if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      {/* Fallback content if image doesn't load */}
+                      <div className="aspect-video bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg flex items-center justify-center hidden">
+                        <div className="text-center">
+                          <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                          </div>
+                          <h3 className="text-lg font-semibold text-gray-800 mb-2">Startup Incubation</h3>
+                          <p className="text-sm text-gray-600">Innovation Hub</p>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Decorative Elements */}
+                    <div className="absolute -top-4 -right-4 w-8 h-8 bg-amber-400 rounded-full"></div>
+                    <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-400 rounded-full"></div>
+                    <div className="absolute top-1/2 -left-6 w-4 h-4 bg-green-400 rounded-full"></div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -1,8 +1,9 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import logo from "@/assets/Logos/Medini_logo.png"
 
 function Footer() {
   const location = useLocation();
+  const navigate = useNavigate();
   const isTechVritti = location.pathname === "/techvritti";
   
   // Define social media links based on the current path
@@ -45,14 +46,32 @@ function Footer() {
             <h3 className="text-xl font-semibold text-gray-800">Explore Our Services</h3>
             <ul className="space-y-2 mt-4">
               <li>
-                <Link to="/builddspace/services/Startup Incubation" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
+                <button 
+                  onClick={() => {
+                    // Scroll to services section
+                    const servicesSection = document.querySelector('#services');
+                    if (servicesSection) {
+                      servicesSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm text-left"
+                >
                   Startup Incubation
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/builddspace/services/interior-design" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
+                <button 
+                  onClick={() => {
+                    // Scroll to services section
+                    const servicesSection = document.querySelector('#services');
+                    if (servicesSection) {
+                      servicesSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm text-left"
+                >
                   Startup support
-                </Link>
+                </button>
               </li>
               {/* <li>
                 <Link to="/builddspace/services/construction" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
@@ -80,22 +99,47 @@ function Footer() {
           {/* Quick Links - center */}
           <div className="space-y-6">
             <h3 className="text-xl font-semibold text-gray-800">Quick Links</h3>
-            <nav className="grid grid-cols-2 gap-4">
-              {[
-                { label: 'About Us', path: '/about' },
-                { label: 'Services', path: '/' },
-                { label: 'Blog', path: '/blog' },
-                { label: 'Contact', path: '/contact' },
-              ].map(({ label, path }) => (
-                <Link
-                  key={label}
-                  to={path}
-                  className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm"
-                >
-                  {label}
-                </Link>
-              ))}
-            </nav>
+                         <nav className="grid grid-cols-2 gap-4">
+               <button 
+                 onClick={() => {
+                   if (location.pathname !== "/") {
+                     navigate("/", { state: { scrollTo: "about" } });
+                   } else {
+                     const aboutSection = document.querySelector('#about');
+                     if (aboutSection) {
+                       aboutSection.scrollIntoView({ behavior: 'smooth' });
+                     }
+                   }
+                 }}
+                 className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm text-left"
+               >
+                 About Us
+               </button>
+               <button 
+                 onClick={() => {
+                   // Scroll to services section
+                   const servicesSection = document.querySelector('#services');
+                   if (servicesSection) {
+                     servicesSection.scrollIntoView({ behavior: 'smooth' });
+                   }
+                 }}
+                 className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm text-left"
+               >
+                 Services
+               </button>
+               <button 
+                 onClick={() => {
+                   // Scroll to contact section
+                   const contactSection = document.querySelector('#contact');
+                   if (contactSection) {
+                     contactSection.scrollIntoView({ behavior: 'smooth' });
+                   }
+                 }}
+                 className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm text-left"
+               >
+                 Contact
+               </button>
+             </nav>
           </div>
 
           {/* Stay Connected - right side */}

@@ -176,15 +176,15 @@ const Header = () => {
                    >
                      Home
                    </button>
-                                     <button 
+                     <button 
                      onClick={() => {
-                       // Scroll to FAQ section (which contains about information)
-                       const faqSection = document.querySelector('#faq');
-                       if (faqSection) {
-                         faqSection.scrollIntoView({ behavior: 'smooth' });
+                       if (location.pathname !== "/") {
+                         navigate("/", { state: { scrollTo: "about" } });
                        } else {
-                         // Fallback: scroll to top
-                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                         const aboutSection = document.querySelector('#about');
+                         if (aboutSection) {
+                           aboutSection.scrollIntoView({ behavior: 'smooth' });
+                         }
                        }
                      }}
                      className="text-sm font-medium transition-colors hover:text-amber-300 text-white"
@@ -218,12 +218,7 @@ const Header = () => {
                 </div>
                 <div className="flex items-center space-x-4">
                   <span className="text-sm text-gray-300">|</span>
-                  <a 
-                    href="tel:+919686311005" 
-                    className="text-sm font-medium transition-colors hover:text-amber-300 text-white"
-                  >
-                    +91 96863 11005
-                  </a>
+                  
                 </div>
               </div>
                          </div>
