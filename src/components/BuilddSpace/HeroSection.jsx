@@ -1,24 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Import background animation
+import bg_animation from "@/assets/loop_glow.gif";
+
 // Import images
-import bg_image from "@/assets/IMAGES/alex-kotliarskyi-QBpZGqEMsKg-unsplash.jpg";
 import StartupIncubation from "@/assets/IMAGES/campaign-creators-gMsnXqILjp4-unsplash (3).jpg";
 import StartupSupport from "@/assets/IMAGES/pexels-yankrukov-7792886.jpg";
-import constructionImage from "@/assets/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg";
-import renovationImage from "@/assets/IMAGES/getty-images-X-lDEMCZBz0-unsplash.jpg";
-
-import sustainableDesignImage from "@/assets/IMAGES/getty-images-KD_fT_T4D24-unsplash.jpg";
 import workSpaceImage from "@/assets/IMAGES/kyle-gregory-devaras-6RTM8EsD1T8-unsplash.jpg";
-import builddspaceAboutImg from "@/assets/IMAGES/Builddspace about.png";
 
 function HeroSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
-  const [selectedService, setSelectedService] = useState(null); // Selected service for details modal
-
-  const sliderRef = useRef(null);
+  const [selectedService, setSelectedService] = useState(null);
   const heroRef = useRef(null);
 
   const services = [
@@ -31,8 +23,6 @@ function HeroSection() {
         "Mentorship Access :Connects startups with experienced mentors in tech, business, and product development.",
         "Workspace & Infrastructure :Offers physical or virtual office space with essential tools and resources.",
         "Product Development Support :Assists in building and refining MVPs through technical guidance.",
-        
-        
       ],
     },
     {
@@ -46,7 +36,6 @@ function HeroSection() {
         "Foundation work",
         "Concrete & masonry work",
         "Plastering, tiling, and flooring",
-        
       ],
     },
     {
@@ -60,352 +49,260 @@ function HeroSection() {
         "Access to meeting rooms and event spaces",
       ],
     },
-    // {
-    //   id: 3,
-    //   image: `${constructionImage}?height=200&width=300`,
-    //   name: "Interior Fit-Outs",
-    //   description: "Interior design and finishing including furniture, ceilings, and aesthetic enhancements.",
-    //   details: [
-    //     "Interior design and execution",
-    //     "Modular furniture solutions",
-    //     "Lighting and false ceiling installation",
-    //     "Painting, carpentry, and finishing works",
-        
-    //   ],
-    // },
-    // {
-    //   id: 4,
-    //   image: `${renovationImage}?height=200&width=300`,
-    //   name: "Site Development & Landscaping",
-    //   description: "Preparation and beautification of land including grading, paving, and planting.",
-    //   details: [
-    //     "Land clearing and grading",
-    //     "Road and pathway construction",
-    //     "Boundary walls and fencing",
-    //     "Green zone planning and garden installation",
-        
-    //   ],
-    // },
-    // {
-    //   id: 5,
-    //   image: `${sustainableDesignImage}?height=200&width=300`,
-    //   name: " Construction Technology Solutions",
-    //   description: "Eco-friendly design solutions for a greener future.",
-    //   details: [
-    //     "Use of construction management software",
-    //     "Drone surveys & 3D mapping",
-    //     "IoT-enabled monitoring (for large sites)",
-    //     "Material tracking and workflow automation",
-        
-    //   ],
-    // }
   ];
-
-  useEffect(() => {
-    const calculateHeaderHeight = () => {
-      const header = document.querySelector("header");
-      if (header) {
-        // Reserved for future use
-      }
-    };
-
-    calculateHeaderHeight();
-
-    window.addEventListener("resize", calculateHeaderHeight);
-    return () => window.removeEventListener("resize", calculateHeaderHeight);
-  }, []);
-
-  const slideLeft = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    } else {
-      setCurrentIndex(services.length - 4);
-    }
-  };
-
-  const slideRight = () => {
-    if (currentIndex < services.length - 4) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      setCurrentIndex(0);
-    }
-  };
-
-  useEffect(() => {
-    let interval;
-    if (!isHovering && !selectedService) {
-      interval = setInterval(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex >= services.length - 4 ? 0 : prevIndex + 1
-        );
-      }, 5000);
-    }
-    return () => clearInterval(interval);
-  }, [services.length, isHovering, selectedService]);
-
-  const visibleCards = 2; // Show 2 cards at a time
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden h-[100vh] flex items-center" ref={heroRef}>
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center z-0 transition-opacity duration-700"
-          style={{
-            backgroundImage: `url(${bg_image})`,
-            backgroundSize: "cover",
-          }}
-        >
-          <div className="absolute inset-0 bg-black bg-opacity-30"></div>
-        </div>
+      <section className="relative overflow-hidden h-screen flex items-center justify-center text-center" ref={heroRef}>
+        <img
+          src={bg_animation}
+          alt="Background Animation"
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
 
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/20 via-black/30 to-black/30"></div>
-
-                 {/* Center Right Text */}
-         <div className="absolute top-1/3 right-12 transform -translate-y-1/2 z-20">
-           <div className="text-right">
-             <div className="text-white font-bold text-base md:text-lg lg:text-xl xl:text-2xl leading-tight">
-               <span className="text-red-500">BU</span><span className="text-white">ILDING </span>
-               <span className="text-red-500">I</span><span className="text-white">NNOVATION </span>
-               <span className="text-red-500">L</span><span className="text-white">EARNING</span>
-             </div>
-             <div className="text-white font-bold text-base md:text-lg lg:text-xl xl:text-2xl leading-tight mt-1">
-               <span className="text-red-500">D</span><span className="text-white">ESIGN & </span>
-               <span className="text-red-500">D</span><span className="text-white">EVELOPMENT </span>
-               <span className="text-red-500">S</span><span className="text-white">PACE</span>
-             </div>
-           </div>
-         </div>
-
-        <div className="container mx-auto px-4 relative z-10 pt-16">
+        <div className="relative z-20 container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col lg:flex-row items-center justify-between"
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: { opacity: 0 },
+              show: { 
+                opacity: 1, 
+                transition: { staggerChildren: 0.3, delayChildren: 0.2 }
+              }
+            }}
           >
-            <div className="lg:w-1/2 text-left">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                Crafting Spaces That Inspire
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-300">
-              We incubate, fund, and scale startups into market leaders - we fastrack your startup’s success .
-              </p>
-
-              <div className="mt-10 flex flex-wrap gap-4">
-                <button
-                  onClick={() => {
-                    const servicesSection = document.querySelector('#services');
-                    if (servicesSection) {
-                      servicesSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="px-8 py-3 bg-transparent border border-white/30 text-white hover:bg-white/10 font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  Explore Services
-                </button>
-              </div>
-            </div>
-            <div className="lg:w-1/2"></div>
-          </motion.div>
-        </div>
-
-      </section>
-
-      {/* About Section */}
-      <section className="py-20 bg-white" id="about">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Text Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="space-y-6"
-              >
-                <div className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
-                  About Us
-                </div>
-                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  Where startups accelerate.
-                </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  The 1% of startups don’t grow by accident. They’re engineered. Our incubator combines Mentorship, Driven scaling frameworks, and access to global investors. If your startup has traction, we’ll help you run your numbers.
-                </p>
-                <div className="space-y-6 mt-8">
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Our Vision</h3>
-                    <p className="text-gray-600">
-                      We're building the Blackstone of startup acceleration – a new paradigm where geography no longer determines destiny.
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Our Mission</h3>
-                    <p className="text-gray-600">
-                      To engineer outlier startups into market leaders through data, mentorship, and ruthless execution.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-              {/* Right Column - Image */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative"
-              >
-                <div className="bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl p-8 shadow-xl">
-                  <div className="relative">
-                    {/* Main Image Container */}
-                    <div className="bg-white rounded-xl p-6 shadow-lg">
-                      <img
-                        src={builddspaceAboutImg}
-                        alt="BuilddSpace Innovation Hub"
-                        className="w-full h-auto rounded-lg object-cover"
-                        onError={e => {
-                          e.target.style.display = 'none';
-                          if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
-                        }}
-                      />
-                      {/* Fallback content if image doesn't load */}
-                      <div className="aspect-video bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg flex items-center justify-center hidden">
-                        <div className="text-center">
-                          <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                          </div>
-                          <h3 className="text-lg font-semibold text-gray-800 mb-2">Startup Incubation</h3>
-                          <p className="text-sm text-gray-600">Innovation Hub</p>
-                        </div>
-                      </div>
-                    </div>
-                    {/* Decorative Elements */}
-                    <div className="absolute -top-4 -right-4 w-8 h-8 bg-amber-400 rounded-full"></div>
-                    <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-400 rounded-full"></div>
-                    <div className="absolute top-1/2 -left-6 w-4 h-4 bg-green-400 rounded-full"></div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Slider Section */}
-      <section id="services" className="bg-white py-20 relative">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="mb-12"
-          >
-            <div className="flex justify-between items-center mb-8">
-
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 w-full text-center">
-                Our Design &amp; Construction Services
-              </h2>
-
-              
-            </div>
-
-            <div
-              className="relative overflow-hidden"
-              ref={sliderRef}
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
+            <motion.h1 
+              variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }} 
+              className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight"
             >
-              <div
-                className="flex justify-center transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` }}
-              >
-                {services.map((service) => (
-                  <div
-                    key={service.id}
-                    className="min-w-[260px] max-w-[320px] px-4 transition-all duration-300 cursor-pointer flex-shrink-0"
-                    onClick={() => setSelectedService(service)}
-                    aria-label={`Show detailed services for ${service.name}`}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={e => { if (e.key === 'Enter') setSelectedService(service) }}
-                  >
-                    <div
-                      className="block bg-white border border-gray-300 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 h-full"
-                      style={{ minHeight: "300px", maxHeight: "370px" }}
-                    >
-                      <div className="relative h-36 overflow-hidden">
-                        <img
-                          src={service.image}
-                          alt={service.name}
-                          className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
-                        />
-                      </div>
-                      <div className="p-5">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{service.name}</h3>
-                        <p className="text-gray-600 text-sm">{service.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Detailed Services Modal */}
-        <AnimatePresence>
-          {selectedService && (
-            <motion.div
-              className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-6 z-50"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedService(null)} // Close modal clicking outside
-              aria-modal="true"
-              role="dialog"
-              aria-labelledby="modal-title"
-              aria-describedby="modal-description"
+              Innovate. Incubate. Inspire.
+            </motion.h1>
+            <motion.p 
+              variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } } }} 
+              className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto"
             >
-              <motion.div
-                className="bg-gray-900 rounded-2xl shadow-xl max-w-3xl w-full max-h-[80vh] overflow-y-auto p-8 relative"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                onClick={e => e.stopPropagation()} // Prevent modal close on clicking inside
+              We empower visionary startups to build, launch, and scale their dreams into reality.
+            </motion.p>
+
+            <motion.div 
+              variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} 
+              className="mt-12"
+            >
+              <motion.button
+                onClick={() => {
+                  const servicesSection = document.querySelector('#services');
+                  if (servicesSection) {
+                    servicesSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="px-10 py-4 bg-amber-500 text-white font-semibold rounded-full shadow-lg hover:bg-amber-600 transition-all duration-300 transform hover:scale-105"
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <button
-                  className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors"
-                  onClick={() => setSelectedService(null)}
-                  aria-label="Close service details modal"
-                >
-                  {/* Removed icon */}
-                </button>
-                <h3 id="modal-title" className="text-3xl font-bold text-amber-400 mb-4">
-                  {selectedService.name} - Detailed Services
-                </h3>
-                <p id="modal-description" className="text-gray-300 mb-6">{selectedService.description}</p>
-                <ul className="list-disc list-inside space-y-2 text-gray-300">
-                  {selectedService.details.map((detail, idx) => (
-                    <li key={idx}>{detail}</li>
-                  ))}
-                </ul>
-                {/* Register button for all services */}
-                <button
-                  className="mt-6 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-all duration-300"
-                  onClick={() => {
-                    // Handle registration logic here
-                    console.log(`Register for ${selectedService.name}`);
-                  }}
-                >
-                  Register
-                </button>
-              </motion.div>
+                Explore Our Services
+              </motion.button>
             </motion.div>
-          )}
-        </AnimatePresence>
+          </motion.div>
+        </div>
       </section>
+
+      {/* Services Section */}
+<section id="services" className="bg-gradient-to-b from-gray-50 to-white py-24 relative">
+  <div className="container mx-auto px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 text-center mb-16">
+        Our <span className="text-amber-500">Services</span>
+      </h2>
+
+      {/* Services Grid */}
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={{
+          hidden: {},
+          show: {
+            transition: { staggerChildren: 0.2 },
+          },
+        }}
+      >
+        {services.map((service) => (
+          <motion.div
+            key={service.id}
+            variants={{
+              hidden: { opacity: 0, y: 40 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+            whileHover={{ scale: 1.03, y: -5 }}
+            className="bg-white rounded-2xl shadow-md overflow-hidden relative group cursor-pointer border border-gray-200 hover:shadow-2xl transition-all"
+            onClick={() => setSelectedService(service)}
+          >
+            {/* Image */}
+            <div className="h-52 overflow-hidden relative">
+              <img
+                src={service.image}
+                alt={service.name}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+
+            {/* Text */}
+            <div className="p-6 flex flex-col justify-between h-56">
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  {service.name}
+                </h3>
+                <p className="text-gray-600 text-sm line-clamp-3">
+                  {service.description}
+                </p>
+              </div>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-6 px-4 py-2 bg-amber-500 text-white rounded-lg shadow hover:bg-amber-600 transition-colors"
+              >
+                Learn More →
+              </motion.button>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.div>
+  </div>
+
+  {/* Modal */}
+  <AnimatePresence>
+    {selectedService && (
+      <motion.div
+        className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center p-6 z-50"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setSelectedService(null)}
+      >
+        <motion.div
+          className="bg-gray-900/90 border border-gray-700 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[80vh] overflow-y-auto p-8 relative text-white"
+          initial={{ scale: 0.85, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.85, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Close Button */}
+          <button
+            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            onClick={() => setSelectedService(null)}
+          >
+            ✕
+          </button>
+
+          {/* Modal Content */}
+          <h3 className="text-3xl font-bold text-amber-400 mb-4">
+            {selectedService.name}
+          </h3>
+          <p className="text-gray-300 mb-6">{selectedService.description}</p>
+          <ul className="list-disc list-inside space-y-2 text-gray-300">
+            {selectedService.details.map((detail, idx) => (
+              <li key={idx}>{detail}</li>
+            ))}
+          </ul>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-8 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg shadow-lg transition-all"
+          >
+            Register Now
+          </motion.button>
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</section>
+
+     {/* About Section */}
+<section id="about" className="relative bg-gradient-to-b from-gray-50 via-white to-gray-50 py-28 overflow-hidden">
+  {/* Background Accent */}
+  <div className="absolute inset-0 -skew-y-3 bg-gradient-to-r from-indigo-100 via-purple-50 to-pink-100 opacity-40"></div>
+  
+  <div className="relative container mx-auto px-6 lg:px-20 max-w-7xl grid lg:grid-cols-2 gap-20 items-center">
+    
+    {/* LEFT: Text */}
+    <motion.div
+      initial={{ opacity: 0, x: -60 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="space-y-6"
+    >
+      <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
+        We <span className="bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">empower startups</span> 
+        to build, scale, and succeed 🚀
+      </h2>
+      <p className="text-lg text-gray-600 leading-relaxed">
+        At Builddspace, we bring founders, mentors, and investors together to 
+        accelerate innovation. With resources, guidance, and community, 
+        your ideas turn into impactful ventures.
+      </p>
+
+      {/* Highlight Stats */}
+      <div className="grid grid-cols-2 gap-6 pt-4">
+        {[
+          { num: "100+", label: "Startups Accelerated" },
+          { num: "50+", label: "Expert Mentors" },
+          { num: "10M+", label: "Funds Raised" },
+          { num: "20+", label: "Global Events" },
+        ].map((stat, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: i * 0.2 }}
+            className="bg-white/70 backdrop-blur-lg shadow-lg rounded-2xl p-4 text-center hover:scale-105 transition-transform duration-300"
+          >
+            <h3 className="text-2xl font-bold text-indigo-600">{stat.num}</h3>
+            <p className="text-sm text-gray-600">{stat.label}</p>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+
+    {/* RIGHT: Layered Images */}
+    <motion.div
+      initial={{ opacity: 0, x: 80 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative flex justify-center lg:justify-end"
+    >
+      {/* Floating card 1 */}
+      <motion.img
+        src="/IMAGES/getty-images-82LbsqatQNA-unsplash.jpg"
+        alt="Startup Team"
+        className="rounded-3xl shadow-2xl w-72 lg:w-96 relative z-20"
+        whileHover={{ scale: 1.05 }}
+        animate={{ y: [0, -12, 0] }}
+        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+      />
+      {/* Floating card 2 (behind) */}
+      <motion.img
+        src="/IMAGES/thisisengineering-r-65knhjRV8-unsplash.jpg"
+        alt="Mentorship"
+        className="rounded-2xl shadow-xl w-60 lg:w-80 absolute -top-10 -left-16 opacity-80"
+        whileHover={{ scale: 1.05 }}
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+      />
+    </motion.div>
+  </div>
+</section>
+
     </>
   );
 }

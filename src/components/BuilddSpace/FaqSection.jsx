@@ -1,349 +1,236 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { ChevronDown, ChevronUp, Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Clock, MessageSquare } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  ChevronDown,
+} from "lucide-react";
 
 export const FaqSection = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  const toggleFaq = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
+  const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [
     {
       question: "What is Startup Incubation at Buildspace?",
       answer:
-        "Startup Incubation at Buildspace is a structured program that supports early-stage startups by providing mentorship, resources, infrastructure, and networking opportunities to turn their ideas into viable businesses."
+        "It is a structured program that supports early-stage startups by providing mentorship, resources, infrastructure, and networking opportunities.",
     },
     {
-      question: " What services are provided in the incubation program?",
+      question: "What services are provided in the incubation program?",
       answer:
-        "Services include workspace, mentorship, seed funding access, business development guidance, legal and financial support, and access to investors and industry networks."
+        "Services include workspace, mentorship, seed funding access, business development guidance, legal and financial support, and access to investors.",
     },
     {
       question: "What is Startup Support at Buildspace?",
       answer:
-        "Startup Support includes a range of services offered to startups at various stages to help them grow sustainably, including technical, marketing, financial, and legal assistance."
+        "Startup Support includes technical, marketing, financial, and legal assistance to help startups grow sustainably.",
     },
     {
       question: "What types of startup support are available?",
       answer:
-        "Support includes pitch deck preparation, business model validation, prototyping, branding, go-to-market strategy, investor connections, and legal compliance."
+        "Support includes pitch deck preparation, prototyping, branding, go-to-market strategy, investor connections, and legal compliance.",
+    },
+    {
+      question: "Is funding guaranteed in the program?",
+      answer:
+        "While funding is not guaranteed, we connect startups with investors and provide fundraising guidance.",
+    },
+    {
+      question: "Can I join remotely?",
+      answer:
+        "Yes, many of our resources, mentorship sessions, and workshops are available virtually.",
+    },
+    {
+      question: "What is the program duration?",
+      answer:
+        "The incubation program typically runs for 6–9 months, depending on the startup stage.",
+    },
+    {
+      question: "Do you provide post-incubation support?",
+      answer:
+        "Yes, we continue to offer alumni support, networking, and investor connections.",
     },
   ];
 
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    projectType: "",
-    message: "",
-  });
-
-  const [formStatus, setFormStatus] = useState({
-    submitted: false,
-    success: false,
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Simulate form submission
-    setFormStatus({
-      submitted: true,
-      success: true,
-      message: "Thank you! Your message has been sent successfully. We'll contact you shortly to discuss your project.",
-    });
-
-    // Reset form after successful submission
-    if (formStatus.success) {
-      setFormState({
-        name: "",
-        email: "",
-        phone: "",
-        projectType: "",
-        message: "",
-      });
-    }
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <div className="bg-white py-0">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
-          <div className="w-24 h-1 bg-amber-500 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Find answers to common questions about our startup incubation and support services.
-          </p>
-        </motion.div>
-
-        <div className="max-w-4xl mx-auto mb-20">
-          {faqs.map((faq, index) => (
+    <div className="bg-gradient-to-br from-white via-amber-50 to-white">
+      {/* FAQ Section */}
+      <section className="py-20 relative">
+        <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-r from-amber-100 to-white rounded-b-[50%]" />
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl font-extrabold text-gray-900 mb-6">
+              Frequently Asked Questions
+            </h2>
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="mb-6"
-            >
-              <button
-                onClick={() => toggleFaq(index)}
-                className={`w-full flex justify-between items-center p-6 rounded-lg text-left transition-all duration-300 ${
-                  activeIndex === index
-                    ? "bg-amber-500 text-white"
-                    : "bg-gray-100 text-gray-900 hover:bg-gray-200"
-                }`}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.6 }}
+              className="w-28 h-1 bg-amber-500 mx-auto mb-6 origin-left"
+            />
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Find answers to common questions about our startup incubation and support services.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-xl shadow-md border border-amber-100 hover:shadow-xl transition-all cursor-pointer overflow-hidden"
+                onClick={() => toggleFAQ(index)}
               >
-                <span className="text-lg font-semibold">{faq.question}</span>
-                {activeIndex === index ? (
-                  <ChevronUp className="w-5 h-5 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 flex-shrink-0" />
-                )}
-              </button>
-              {activeIndex === index && (
-                <div className="bg-gray-100 border border-gray-300 p-6 rounded-b-lg mt-1">
-                  <p className="text-gray-700">{faq.answer}</p>
+                <div className="flex items-center justify-between p-5">
+                  <h3 className="text-base font-semibold text-gray-900 pr-2">
+                    {faq.question}
+                  </h3>
+                  <motion.div
+                    animate={{ rotate: openIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ChevronDown className="w-5 h-5 text-amber-600" />
+                  </motion.div>
                 </div>
-              )}
-            </motion.div>
-          ))}
-        </div>
-
-
-
-        {/* Get in Touch Section */}
-        <section id="contact" className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-12">
-                {/* Contact information */}
-                <div>
-                  <div className="mb-12">
-                    <div className="inline-block px-3 py-1 text-sm font-medium text-amber-600 bg-amber-100 rounded-full mb-4">
-                      Get In Touch
-                    </div>
-                    {/* <h2 className="text-5xl font-extrabold text-gray-900 mb-4 bg-amber-100 p-4 rounded-lg shadow-md">
-                      Let's Discuss Your Design Project
-                    </h2> */}
-
-                    <p className="text-gray-600 text-lg mb-6">
-                      Contact information
-                    </p>
-                  </div>
-
-                  <div className="space-y-6">
-                    {[
-                      {
-                        icon: <Mail className="w-5 h-5" />,
-                        title: "Email Us",
-                        content: "connect@medini.in",
-                        link: "mailto:connect@medini.in",
-                      },
-                      {
-                        icon: <Phone className="w-5 h-5" />,
-                        title: "Call Us",
-                        content: "+91 9900081006 ",
-                        link: "tel:9900081006 ",
-                      },
-                      {
-                        icon: <MapPin className="w-5 h-5" />,
-                        title: "Visit Our Company",
-                        content: "#89, 18th main, 15th Cross, Near Post office, MRCR Layout, Vijayanagar, Bangalore",
-                        link: "https://maps.google.com",
-                      },
-                    ].map((item, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        className="flex items-start"
-                      >
-                        <div className="p-3 rounded-full bg-amber-50 text-amber-600 mr-4">
-                          {item.icon}
-                        </div>
-                        <div>
-                          <h3 className="font-medium text-gray-900 mb-1">{item.title}</h3>
-                          <a
-                            href={item.link}
-                            className="text-gray-600 hover:text-amber-600 transition-colors"
-                          >
-                            {item.content}
-                          </a>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* Studio hours */}
-                  <div className="mt-12 bg-amber-50 rounded-xl p-6">
-                    <h3 className="text-lg font-medium mb-4 flex items-center">
-                      <Clock className="w-5 h-5 mr-2 text-amber-600" />
-                      Studio Hours
-                    </h3>
-                    <ul className="space-y-2 text-gray-600">
-                      <li className="flex justify-between">
-                        <span>Monday - Saturday</span>
-                        <span>9:00 AM - 8:30 PM</span>
-                      </li>
-                      <li className="flex justify-between">
-                        <span>Sunday</span>
-                        <span>Closed</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Contact form */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl shadow-xl p-8 border border-gray-100"
-                >
-                  {formStatus.submitted && (
-                    <div
-                      className={`mb-6 p-4 rounded-lg ${formStatus.success ? "bg-green-50 text-green-800" : "bg-red-50 text-red-800"}`}
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="px-5 pb-5 text-gray-600 text-sm"
                     >
-                      <div className="flex items-center">
-                        {formStatus.success ? (
-                          <CheckCircle className="w-5 h-5 mr-2" />
-                        ) : (
-                          <AlertCircle className="w-5 h-5 mr-2" />
-                        )}
-                        <p>{formStatus.message}</p>
-                      </div>
-                    </div>
+                      {faq.answer}
+                    </motion.div>
                   )}
-
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                          Full Name
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          value={formState.name}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                          placeholder="John Doe"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                          Email Address
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formState.email}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                          placeholder="john@example.com"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={formState.phone}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                          placeholder="+1234567890"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="projectType"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Project Type
-                        </label>
-                        <select
-                          id="projectType"
-                          name="projectType"
-                          value={formState.projectType}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                        >
-                          <option value="">Select Project Type</option>
-                          <option value="residential-interior">Architectural Design</option>
-                          <option value="commercial-interior">Interior Design</option>
-                          <option value="exterior-design">Construction Management</option>
-                          <option value="bim-modeling">Renovation Services</option>
-                          <option value="3d-visualization">Sustainable Design</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                        Project Details
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formState.message}
-                        onChange={handleChange}
-                        required
-                        rows={5}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                        placeholder="Tell us about your project, goals, timeline, and budget..."
-                      ></textarea>
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full flex items-center justify-center px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg transition-colors duration-200"
-                    >
-                      Send Message
-                      <Send className="ml-2 w-4 h-4" />
-                    </button>
-                  </form>
-
-                  <div className="mt-6 text-center">
-                    <p className="text-sm text-gray-500 flex items-center justify-center">
-                      <MessageSquare className="w-4 h-4 mr-1" />
-                     
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
+                </AnimatePresence>
+              </motion.div>
+            ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl font-extrabold text-gray-900 mb-6">
+              Get in Touch
+            </h2>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.6 }}
+              className="w-28 h-1 bg-amber-500 mx-auto mb-6 origin-left"
+            />
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              We'd love to hear from you. Send us a message or drop by for a coffee.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-3 gap-10 max-w-7xl mx-auto items-stretch">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              {[
+                {
+                  icon: <Mail className="w-6 h-6" />,
+                  title: "Email Us",
+                  content: "connect@medini.in",
+                  link: "mailto:connect@medini.in",
+                },
+                {
+                  icon: <Phone className="w-6 h-6" />,
+                  title: "Call Us",
+                  content: "+91 9900081006",
+                  link: "tel:9900081006",
+                },
+                {
+                  icon: <MapPin className="w-6 h-6" />,
+                  title: "Visit Us",
+                  content:
+                    "#89, 18th main, 15th Cross, MRCR Layout, Vijayanagar, Bangalore",
+                  link: "https://maps.google.com",
+                },
+              ].map((item, index) => (
+                <motion.a
+                  key={index}
+                  href={item.link}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="flex items-start p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition group border border-amber-100"
+                >
+                  <div className="p-3 rounded-full bg-amber-100 text-amber-600 mr-4">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 group-hover:text-amber-600 transition">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600">{item.content}</p>
+                  </div>
+                </motion.a>
+              ))}
+              <div className="p-6 bg-gradient-to-r from-amber-50 to-white rounded-xl border border-amber-100">
+                <h3 className="text-lg font-semibold text-gray-800 flex items-center mb-3">
+                  <Clock className="w-5 h-5 mr-2 text-amber-600" />
+                  Studio Hours
+                </h3>
+                <p className="text-gray-600">Mon - Sat: 9:00 AM - 8:30 PM</p>
+                <p className="text-gray-600">Sunday: Closed</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="lg:col-span-2 flex flex-col gap-8"
+            >
+
+              <div className="rounded-xl overflow-hidden shadow-md border border-amber-100">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.020175255245!2d77.52923427845927!3d12.970560754713853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3df2b6f61611%3A0xc7ac8e95d96813ea!2s18th%20Main%20Rd%2C%20MRCR%20Layout%2C%20Stage%202%2C%20Vijayanagar%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1755167406001!5m2!1sen!2sin"
+                  width="100%"
+                  height="350"
+                  allowFullScreen=""
+                  loading="lazy"
+                  className="w-full h-[350px] border-0"
+                ></iframe>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
