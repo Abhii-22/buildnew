@@ -6,8 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-/dist
-/node_modules
+dist
+node_modules
 dist
 dist-ssr
 *.local
@@ -24,4 +24,4 @@ dist.zip
 *.njsproj
 *.sln
 *.sw?
-/public
+public
