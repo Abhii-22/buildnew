@@ -2,7 +2,7 @@ import image from "@/assets/IMAGES/getty-images-82LbsqatQNA-unsplash.jpg"
 
 export function MissionSection() {
     return (
-      <section className="py-20 mx-auto bg-gray-300 dark:bg-gray-900">
+      <section className="py-20 w-full bg-gray-300 dark:bg-gray-900">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">

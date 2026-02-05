@@ -54,54 +54,30 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => {
-                // Scroll to top of the page
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="text-sm font-medium transition-colors hover:text-amber-300 text-white"
+            <NavLink 
+              to="/"
+              className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white"
             >
               Home
-            </button>
-            <button 
-              onClick={() => {
-                if (location.pathname !== "/") {
-                  navigate("/", { state: { scrollTo: "about" } });
-                } else {
-                  const aboutSection = document.querySelector('#about');
-                  if (aboutSection) {
-                    aboutSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }
-              }}
-              className="text-sm font-medium transition-colors hover:text-amber-300 text-white"
+            </NavLink>
+            <NavLink 
+              to="/builddspace/about"
+              className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white"
             >
               About
-            </button>
-            <button 
-              onClick={() => {
-                // Scroll to services section
-                const servicesSection = document.querySelector('#services');
-                if (servicesSection) {
-                  servicesSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="text-sm font-medium transition-colors hover:text-amber-300 text-white"
+            </NavLink>
+            <NavLink 
+              to="/builddspace/services"
+              className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white"
             >
               Services
-            </button>
-            <button 
-              onClick={() => {
-                // Scroll to contact section
-                const contactSection = document.querySelector('#contact');
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="text-sm font-medium transition-colors hover:text-amber-300 text-white"
+            </NavLink>
+            <NavLink 
+              to="/builddspace/contact"
+              className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white"
             >
               Contact
-            </button>
+            </NavLink>
           </div>
 
           {/* Mobile Navigation */}
@@ -130,38 +106,27 @@ const Header = () => {
                 <SheetTitle>Menu</SheetTitle>
               </SheetHeader>
               <div className="space-y-4 mt-4">
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-white border-white hover:border-white">
                   <SheetTrigger asChild className="md:hidden">
                     <Link to="/">Home</Link>
                   </SheetTrigger>
                 </Button>
                 
-                                 <Button variant="outline" className="w-full flex items-center">
-                   <SheetTrigger asChild className="md:hidden">
-                     <Link to="/builddspace">About</Link>
-                   </SheetTrigger>
-                 </Button>
-                 <Button variant="outline" className="w-full flex items-center">
-                   <SheetTrigger asChild className="md:hidden">
-                     <Link to="/builddspace">Services</Link>
-                   </SheetTrigger>
-                 </Button>
-                                   <Button variant="outline" className="w-full flex items-center">
-                    <SheetTrigger asChild className="md:hidden">
-                      <button 
-                        onClick={() => {
-                          // Scroll to contact section
-                          const contactSection = document.querySelector('#contact');
-                          if (contactSection) {
-                            contactSection.scrollIntoView({ behavior: 'smooth' });
-                          }
-                        }}
-                        className="w-full text-left"
-                      >
-                        Contact
-                      </button>
-                    </SheetTrigger>
-                  </Button>
+                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-white border-white hover:border-white">
+                  <SheetTrigger asChild className="md:hidden">
+                    <Link to="/builddspace/about">About</Link>
+                  </SheetTrigger>
+                </Button>
+                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-white border-white hover:border-white">
+                  <SheetTrigger asChild className="md:hidden">
+                    <Link to="/builddspace/services">Services</Link>
+                  </SheetTrigger>
+                </Button>
+                <Button variant="outline" className="w-full flex items-center bg-amber-600 hover:bg-amber-700 text-white border-amber-600 hover:border-amber-700">
+                  <SheetTrigger asChild className="md:hidden">
+                    <Link to="/builddspace/contact">Contact</Link>
+                  </SheetTrigger>
+                </Button>
               </div>
             </SheetContent>
           </Sheet>

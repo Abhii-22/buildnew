@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import logo from "@/assets/Logos/Medini_logo.png"
 
@@ -46,32 +47,28 @@ function Footer() {
             <h3 className="text-xl font-semibold text-gray-800">Explore Our Services</h3>
             <ul className="space-y-2 mt-4">
               <li>
-                <button 
-                  onClick={() => {
-                    // Scroll to services section
-                    const servicesSection = document.querySelector('#services');
-                    if (servicesSection) {
-                      servicesSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                <Link 
+                  to="/builddspace/services"
                   className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm text-left"
                 >
                   Startup Incubation
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => {
-                    // Scroll to services section
-                    const servicesSection = document.querySelector('#services');
-                    if (servicesSection) {
-                      servicesSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                <Link 
+                  to="/builddspace/services"
                   className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm text-left"
                 >
                   Startup support
-                </button>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/builddspace/services"
+                  className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm text-left"
+                >
+                  Work Space
+                </Link>
               </li>
               {/* <li>
                 <Link to="/builddspace/services/construction" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">

@@ -9,6 +9,7 @@ import ContactPage from "./pages/MediniTech/ContactPage"
 import { ThemeProvider } from "./components/ThemeProvider"
 import "./index.css"
 import AboutPage from "./pages/MediniTech/AboutPage"
+import BuilddSpaceAboutPage from "./pages/BuilddSpace/AboutPage"
 import BlogPage from "./pages/MediniTech/BlogPage"
 import AwardsPage from "./pages/MediniTech/AwardsPage"
 import Home from "./pages/MediniSchool/Home"
@@ -20,18 +21,20 @@ import TeamechHome from "./pages/TeaMech/Home"
 import EduphygitalHome from "./pages/Eduphygital/Home"
 import DigiDhvaniHome from "./pages/DigiDhvani/Home"
 import BuilddSpaceHome from "./pages/BuilddSpace/Home"
+import BuilddSpaceServicesComponent from "./components/BuilddSpace/Services"
 import BimServicesComponent from "./components/BIM/Services"
 import ServicesComponent from "./components/TechVritti/Services"
 import TeamechServicesComponent from "./components/Teamech/Services"
+import BuilddSpaceContactPage from "./pages/BuilddSpace/ContactPage"
 import ScrollToTop from "./components/ScrollToTop"
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
           <Header />
-          <main className="flex-1 mt-10">
+          <main className="flex-1 mt-10 w-full">
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<BuilddSpaceHome />} />
@@ -68,8 +71,9 @@ function App() {
               <Route path="/digidhvani/contact" element={<ContactPage />} />
               
               <Route path="/builddspace" element={<BuilddSpaceHome />} />
-              <Route path="/builddspace/about" element={<AboutPage />} />
-              <Route path="/builddspace/contact" element={<ContactPage />} />
+              <Route path="/builddspace/about" element={<BuilddSpaceAboutPage />} />
+              <Route path="/builddspace/services" element={<BuilddSpaceServicesComponent />} />
+              <Route path="/builddspace/contact" element={<BuilddSpaceContactPage />} />
             </Routes>
           </main>
           <Footer />
