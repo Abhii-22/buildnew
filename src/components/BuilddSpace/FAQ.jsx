@@ -55,7 +55,7 @@ export const FAQ = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-white via-amber-50 to-white">
+    <div className="bg-gradient-to-br from-cyan-50 via-teal-50 to-emerald-50">
       <section className="py-20 relative">
         <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-r from-amber-100 to-white rounded-b-[50%]" />
         <div className="container mx-auto px-4 relative z-10">

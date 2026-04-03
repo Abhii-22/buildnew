@@ -64,7 +64,7 @@ export const Contact = () => {
                   icon: <MapPin className="w-6 h-6" />,
                   title: "Visit Us",
                   content:
-                    "XGCP+9J3, MRCR Layout, MC Layout, Vijayanagar, Bengaluru, Karnataka 560040",
+                    "MRCR Layout, MC Layout, Vijayanagar, Bengaluru, Karnataka 560040",
                   link: "https://maps.google.com",
                 },
               ].map((item, index) => (
