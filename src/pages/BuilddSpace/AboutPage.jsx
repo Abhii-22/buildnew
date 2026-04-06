@@ -462,23 +462,68 @@ const AboutPage = () => {
           </motion.div>
 
           <div className="relative max-w-4xl mx-auto">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-gray-300 via-gray-400 to-gray-500 rounded-full"></div>
+            {/* Timeline Line - Desktop Only */}
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-gray-300 via-gray-400 to-gray-500 rounded-full"></div>
             
-            <div className="space-y-12">
+            {/* Mobile Timeline Line - Vertical */}
+            <div className="md:hidden absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gray-300 via-gray-400 to-gray-500 rounded-full"></div>
+            
+            <div className="space-y-8 md:space-y-12">
               {timeline.map((item, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: i % 2 === 0 ? -100 : 100 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: i * 0.2, type: "spring" }}
-                  className={`flex items-center ${i % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                  className={`flex items-center ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col md:flex-row relative`}
                 >
-                  <div className="w-1/2"></div>
+                  {/* Desktop Spacer */}
+                  <div className="hidden md:block w-1/2"></div>
+                  
+                  {/* Mobile Content - Top */}
+                  <div className="md:hidden w-full pl-20 pr-4 mb-4">
+                    <motion.div 
+                      className={`relative ${item.milestone ? 'bg-gradient-to-br from-amber-50 to-orange-100 border-amber-300' : 'bg-white border-gray-200'} border-2 rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-all duration-300`}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {/* Accent bar */}
+                      <div className={`absolute top-0 left-0 w-1 h-full ${item.milestone ? 'bg-gradient-to-b from-amber-400 to-orange-500' : 'bg-gradient-to-b from-gray-400 to-gray-600'} rounded-l-2xl`}></div>
+                      
+                      <div className="flex items-start mb-3">
+                        <motion.div 
+                          className={`w-10 h-10 rounded-xl ${item.milestone ? 'bg-gradient-to-br from-amber-400 to-orange-500' : 'bg-gradient-to-br from-gray-500 to-gray-700'} flex items-center justify-center text-white shadow-lg mr-3`}
+                          whileHover={{ 
+                            scale: 1.1,
+                            rotate: -10
+                          }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="scale-75">
+                            {item.icon}
+                          </div>
+                        </motion.div>
+                        <div className="flex-1">
+                          <h4 className={`text-base font-bold ${item.milestone ? 'text-amber-700' : 'text-gray-700'} mb-1`}>{item.title}</h4>
+                          {item.milestone && (
+                            <motion.span 
+                              className="inline-block px-2 py-1 bg-amber-200 text-amber-800 text-xs font-semibold rounded-full"
+                              initial={{ scale: 0 }}
+                              whileInView={{ scale: 1 }}
+                              transition={{ duration: 0.3, delay: 0.5 }}
+                            >
+                              MILESTONE
+                            </motion.span>
+                          )}
+                        </div>
+                      </div>
+                      <p className="text-gray-600 leading-relaxed text-sm">{item.description}</p>
+                    </motion.div>
+                  </div>
                   
                   {/* Timeline Dot */}
                   <motion.div 
-                    className="relative z-10 w-16 h-16 bg-white border-4 border-gray-500 rounded-full flex items-center justify-center shadow-lg"
+                    className="relative z-10 w-12 h-12 md:w-16 md:h-16 bg-white border-4 border-gray-500 rounded-full flex items-center justify-center shadow-lg mx-auto md:mx-0"
                     whileHover={{ 
                       scale: 1.2,
                       rotate: 360,
@@ -486,10 +531,10 @@ const AboutPage = () => {
                     }}
                     transition={{ duration: 0.5, type: "spring" }}
                   >
-                    <div className="w-6 h-6 bg-gradient-to-r from-gray-500 to-gray-700 rounded-full"></div>
+                    <div className="w-4 h-4 md:w-6 md:h-6 bg-gradient-to-r from-gray-500 to-gray-700 rounded-full"></div>
                     {item.milestone && (
                       <motion.div 
-                        className="absolute -top-1 -right-1 w-4 h-4 bg-amber-400 rounded-full"
+                        className="absolute -top-1 -right-1 w-3 h-3 md:w-4 md:h-4 bg-amber-400 rounded-full"
                         animate={{ 
                           scale: [1, 1.3, 1],
                           opacity: [0.8, 1, 0.8]
@@ -499,9 +544,9 @@ const AboutPage = () => {
                     )}
                   </motion.div>
                   
-                  {/* Content Card */}
+                  {/* Desktop Content */}
                   <motion.div 
-                    className="w-1/2 px-8"
+                    className="hidden md:block w-1/2 px-8"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >

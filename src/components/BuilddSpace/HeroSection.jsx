@@ -113,9 +113,9 @@ function HeroSection() {
                 <div className="relative">
                   <div className="absolute -inset-4 bg-gray-300 rounded-2xl blur opacity-20"></div>
                   <div className="relative bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-                    <div className="flex flex-col md:flex-row h-80">
+                    <div className="flex flex-col md:flex-row h-auto md:h-80">
                       {/* Image Side */}
-                      <div className="md:w-2/5 h-full relative">
+                      <div className="md:w-2/5 h-48 md:h-full relative">
                         <img
                           src={innovationImg}
                           alt="Innovation"
@@ -123,7 +123,7 @@ function HeroSection() {
                         />
                         <div className="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                           <motion.h4 
-                            className="text-2xl font-bold text-white mb-1 overflow-hidden"
+                            className="text-lg md:text-2xl font-bold text-white mb-1 overflow-hidden"
                             initial={{ width: 0 }}
                             whileInView={{ width: "100%" }}
                             transition={{ duration: 1.5, ease: "easeOut" }}
@@ -144,35 +144,35 @@ function HeroSection() {
                         </div>
                       </div>
                       {/* Content Side */}
-                      <div className="md:w-3/5 p-6 flex flex-col justify-center">
+                      <div className="md:w-3/5 p-4 md:p-6 flex flex-col justify-center">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 bg-gray-500 rounded-lg flex items-center justify-center">
-                            <span className="text-xl font-bold text-white">01</span>
+                          <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-500 rounded-lg flex items-center justify-center">
+                            <span className="text-lg md:text-xl font-bold text-white">01</span>
                           </div>
                           <div>
-                            <h3 className="text-2xl font-bold text-gray-900">INNOVATE</h3>
-                            <span className="text-sm text-gray-500 font-medium">BREAKTHROUGH</span>
+                            <h3 className="text-xl md:text-2xl font-bold text-gray-900">INNOVATE</h3>
+                            <span className="text-xs md:text-sm text-gray-500 font-medium">BREAKTHROUGH</span>
                           </div>
                         </div>
-                        <p className="text-gray-600 leading-relaxed mb-4">
+                        <p className="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
                           Break boundaries with cutting-edge technology and creative solutions that redefine what's possible.
                         </p>
                         <div className="space-y-2">
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Advanced Technology Integration</span>
+                            <span className="text-black text-xs md:text-sm">Advanced Technology Integration</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Creative Problem Solving</span>
+                            <span className="text-black text-xs md:text-sm">Creative Problem Solving</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Future-Ready Solutions</span>
+                            <span className="text-black text-xs md:text-sm">Future-Ready Solutions</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Disruptive Innovation</span>
+                            <span className="text-black text-xs md:text-sm">Disruptive Innovation</span>
                           </div>
                         </div>
                         <div className="mt-4 pt-4 border-t border-gray-200">
@@ -195,9 +195,9 @@ function HeroSection() {
                 <div className="relative">
                   <div className="absolute -inset-4 bg-gray-300 rounded-2xl blur opacity-20"></div>
                   <div className="relative bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-                    <div className="flex flex-col md:flex-row-reverse h-80">
+                    <div className="flex flex-col md:flex-row-reverse h-auto md:h-80">
                       {/* Image Side */}
-                      <div className="md:w-2/5 h-full relative">
+                      <div className="md:w-2/5 h-48 md:h-full relative">
                         <img
                           src={incubationImg}
                           alt="Incubation"
@@ -205,7 +205,7 @@ function HeroSection() {
                         />
                         <div className="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                           <motion.h4 
-                            className="text-2xl font-bold text-white mb-1 overflow-hidden"
+                            className="text-lg md:text-2xl font-bold text-white mb-1 overflow-hidden"
                             initial={{ width: 0 }}
                             whileInView={{ width: "100%" }}
                             transition={{ duration: 1.5, ease: "easeOut" }}
@@ -226,35 +226,35 @@ function HeroSection() {
                         </div>
                       </div>
                       {/* Content Side */}
-                      <div className="md:w-3/5 p-6 flex flex-col justify-center">
+                      <div className="md:w-3/5 p-4 md:p-6 flex flex-col justify-center">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 bg-gray-500 rounded-lg flex items-center justify-center">
-                            <span className="text-xl font-bold text-white">02</span>
+                          <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-500 rounded-lg flex items-center justify-center">
+                            <span className="text-lg md:text-xl font-bold text-white">02</span>
                           </div>
                           <div>
-                            <h3 className="text-2xl font-bold text-gray-900">INCUBATE</h3>
-                            <span className="text-sm text-gray-500 font-medium">NURTURE</span>
+                            <h3 className="text-xl md:text-2xl font-bold text-gray-900">INCUBATE</h3>
+                            <span className="text-xs md:text-sm text-gray-500 font-medium">NURTURE</span>
                           </div>
                         </div>
-                        <p className="text-gray-600 leading-relaxed mb-4">
+                        <p className="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
                           Nurture ideas from concept to reality with comprehensive support and expert guidance.
                         </p>
                         <div className="space-y-2">
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Mentorship Programs</span>
+                            <span className="text-black text-xs md:text-sm">Mentorship Programs</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Resource Allocation</span>
+                            <span className="text-black text-xs md:text-sm">Resource Allocation</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Growth Acceleration</span>
+                            <span className="text-black text-xs md:text-sm">Growth Acceleration</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Expert Guidance</span>
+                            <span className="text-black text-xs md:text-sm">Expert Guidance</span>
                           </div>
                         </div>
                         <div className="mt-4 pt-4 border-t border-gray-200">
@@ -277,9 +277,9 @@ function HeroSection() {
                 <div className="relative">
                   <div className="absolute -inset-4 bg-gray-300 rounded-2xl blur opacity-20"></div>
                   <div className="relative bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-                    <div className="flex flex-col md:flex-row h-80">
+                    <div className="flex flex-col md:flex-row h-auto md:h-80">
                       {/* Image Side */}
-                      <div className="md:w-2/5 h-full relative">
+                      <div className="md:w-2/5 h-48 md:h-full relative">
                         <img
                           src={inspirationImg}
                           alt="Inspiration"
@@ -287,7 +287,7 @@ function HeroSection() {
                         />
                         <div className="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                           <motion.h4 
-                            className="text-2xl font-bold text-white mb-1 overflow-hidden"
+                            className="text-lg md:text-2xl font-bold text-white mb-1 overflow-hidden"
                             initial={{ width: 0 }}
                             whileInView={{ width: "100%" }}
                             transition={{ duration: 1.5, ease: "easeOut" }}
@@ -308,35 +308,35 @@ function HeroSection() {
                         </div>
                       </div>
                       {/* Content Side */}
-                      <div className="md:w-3/5 p-6 flex flex-col justify-center">
+                      <div className="md:w-3/5 p-4 md:p-6 flex flex-col justify-center">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 bg-gray-500 rounded-lg flex items-center justify-center">
-                            <span className="text-xl font-bold text-white">03</span>
+                          <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-500 rounded-lg flex items-center justify-center">
+                            <span className="text-lg md:text-xl font-bold text-white">03</span>
                           </div>
                           <div>
-                            <h3 className="text-2xl font-bold text-gray-900">INSPIRE</h3>
-                            <span className="text-sm text-gray-500 font-medium">IGNITE</span>
+                            <h3 className="text-xl md:text-2xl font-bold text-gray-900">INSPIRE</h3>
+                            <span className="text-xs md:text-sm text-gray-500 font-medium">IGNITE</span>
                           </div>
                         </div>
-                        <p className="text-gray-600 leading-relaxed mb-4">
+                        <p className="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
                           Ignite passion and creativity that fuels breakthrough thinking and transformative action.
                         </p>
                         <div className="space-y-2">
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Creative Workshops</span>
+                            <span className="text-black text-xs md:text-sm">Creative Workshops</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Innovation Labs</span>
+                            <span className="text-black text-xs md:text-sm">Innovation Labs</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Vision Development</span>
+                            <span className="text-black text-xs md:text-sm">Vision Development</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Creative Thinking</span>
+                            <span className="text-black text-xs md:text-sm">Creative Thinking</span>
                           </div>
                         </div>
                         <div className="mt-4 pt-4 border-t border-gray-200">
@@ -364,9 +364,9 @@ function HeroSection() {
                 <div className="relative">
                   <div className="absolute -inset-4 bg-gray-300 rounded-2xl blur opacity-20"></div>
                   <div className="relative bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-                    <div className="flex flex-col md:flex-row-reverse h-80">
+                    <div className="flex flex-col md:flex-row-reverse h-auto md:h-80">
                       {/* Image Side */}
-                      <div className="md:w-2/5 h-full relative">
+                      <div className="md:w-2/5 h-48 md:h-full relative">
                         <img
                           src={collaborationImg}
                           alt="Collaboration"
@@ -374,7 +374,7 @@ function HeroSection() {
                         />
                         <div className="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                           <motion.h4 
-                            className="text-2xl font-bold text-white mb-1 overflow-hidden"
+                            className="text-lg md:text-2xl font-bold text-white mb-1 overflow-hidden"
                             initial={{ width: 0 }}
                             whileInView={{ width: "100%" }}
                             transition={{ duration: 1.5, ease: "easeOut" }}
@@ -395,35 +395,35 @@ function HeroSection() {
                         </div>
                       </div>
                       {/* Content Side */}
-                      <div className="md:w-3/5 p-6 flex flex-col justify-center">
+                      <div className="md:w-3/5 p-4 md:p-6 flex flex-col justify-center">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 bg-gray-500 rounded-lg flex items-center justify-center">
-                            <span className="text-xl font-bold text-white">04</span>
+                          <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-500 rounded-lg flex items-center justify-center">
+                            <span className="text-lg md:text-xl font-bold text-white">04</span>
                           </div>
                           <div>
-                            <h3 className="text-2xl font-bold text-gray-900">COLLABORATE</h3>
-                            <span className="text-sm text-gray-500 font-medium">CONNECT</span>
+                            <h3 className="text-xl md:text-2xl font-bold text-gray-900">COLLABORATE</h3>
+                            <span className="text-xs md:text-sm text-gray-500 font-medium">CONNECT</span>
                           </div>
                         </div>
-                        <p className="text-gray-600 leading-relaxed mb-4">
+                        <p className="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
                           Build powerful ecosystems and partnerships that amplify impact and drive collective success.
                         </p>
                         <div className="space-y-2">
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Network Building</span>
+                            <span className="text-black text-xs md:text-sm">Network Building</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Partnership Development</span>
+                            <span className="text-black text-xs md:text-sm">Partnership Development</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Community Engagement</span>
+                            <span className="text-black text-xs md:text-sm">Community Engagement</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            <span className="text-black text-sm">Shared Success</span>
+                            <span className="text-black text-xs md:text-sm">Shared Success</span>
                           </div>
                         </div>
                         <div className="mt-4 pt-4 border-t border-gray-200">

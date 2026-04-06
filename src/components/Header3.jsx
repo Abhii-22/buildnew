@@ -83,19 +83,19 @@ const Header = () => {
           {/* Mobile Navigation */}
           <Sheet>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen((prev) => !prev)}>
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10" onClick={() => setIsMobileMenuOpen((prev) => !prev)}>
                 <div
-                  className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${
+                  className={`absolute w-5 h-0.5 bg-white transition-all duration-500 ${
                     isMobileMenuOpen ? "rotate-45" : "-translate-y-1.5"
                   }`}
                 ></div>
                 <div
-                  className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${
+                  className={`absolute w-5 h-0.5 bg-white transition-all duration-500 ${
                     isMobileMenuOpen ? "opacity-0" : "opacity-100"
                   }`}
                 ></div>
                 <div
-                  className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${
+                  className={`absolute w-5 h-0.5 bg-white transition-all duration-500 ${
                     isMobileMenuOpen ? "-rotate-45" : "translate-y-1.5"
                   }`}
                 ></div>
@@ -106,18 +106,18 @@ const Header = () => {
                 <SheetTitle>Menu</SheetTitle>
               </SheetHeader>
               <div className="space-y-4 mt-4">
-                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-white border-white hover:border-white">
+                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white">
                   <SheetTrigger asChild className="md:hidden">
                     <Link to="/">Home</Link>
                   </SheetTrigger>
                 </Button>
                 
-                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-white border-white hover:border-white">
+                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white">
                   <SheetTrigger asChild className="md:hidden">
                     <Link to="/builddspace/about">About</Link>
                   </SheetTrigger>
                 </Button>
-                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-white border-white hover:border-white">
+                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white">
                   <SheetTrigger asChild className="md:hidden">
                     <Link to="/builddspace/services">Services</Link>
                   </SheetTrigger>
