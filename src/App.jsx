@@ -22,6 +22,9 @@ import EduphygitalHome from "./pages/Eduphygital/Home"
 import DigiDhvaniHome from "./pages/DigiDhvani/Home"
 import BuilddSpaceHome from "./pages/BuilddSpace/Home"
 import BuilddSpaceServicesComponent from "./components/BuilddSpace/Services"
+import StartupIncubationPage from "./components/BuilddSpace/service pages/StartupIncubation"
+import StartupSupportPage from "./components/BuilddSpace/service pages/StartupSupport"
+import WorkSpacePage from "./components/BuilddSpace/service pages/WorkSpace"
 import BimServicesComponent from "./components/BIM/Services"
 import ServicesComponent from "./components/TechVritti/Services"
 import TeamechServicesComponent from "./components/Teamech/Services"
@@ -73,6 +76,9 @@ function App() {
               <Route path="/builddspace" element={<BuilddSpaceHome />} />
               <Route path="/builddspace/about" element={<BuilddSpaceAboutPage />} />
               <Route path="/builddspace/services" element={<BuilddSpaceServicesComponent />} />
+              <Route path="/builddspace/services/startup-incubation" element={<StartupIncubationPage />} />
+              <Route path="/builddspace/services/startup-support" element={<StartupSupportPage />} />
+              <Route path="/builddspace/services/work-space" element={<WorkSpacePage />} />
               <Route path="/builddspace/contact" element={<BuilddSpaceContactPage />} />
             </Routes>
           </main>

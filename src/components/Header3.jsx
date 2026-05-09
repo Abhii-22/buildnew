@@ -2,7 +2,8 @@ import { useState, useEffect } from "react"
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+import { ChevronDown } from "lucide-react"
 import logo from "@/assets/Logos/Medini_logo.png"
 import buildspaceLogo from "@/assets/NAVBAR/Builddspace Whte.png"
 
@@ -13,6 +14,7 @@ const Header = () => {
   const [showLinks, setShowLinks] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
 
 
@@ -66,12 +68,65 @@ const Header = () => {
             >
               About
             </NavLink>
-            <NavLink 
-              to="/builddspace/services"
-              className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white"
-            >
-              Services
-            </NavLink>
+            <div className="relative">
+              <button
+                onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+                onMouseEnter={() => setIsServicesDropdownOpen(true)}
+                onMouseLeave={() => setIsServicesDropdownOpen(false)}
+                className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white flex items-center gap-2"
+              >
+                Services
+                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              <AnimatePresence>
+                {isServicesDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    onMouseEnter={() => setIsServicesDropdownOpen(true)}
+                    onMouseLeave={() => setIsServicesDropdownOpen(false)}
+                    className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50"
+                  >
+                    <NavLink
+                      to="/builddspace/services/startup-incubation"
+                      onClick={() => setIsServicesDropdownOpen(false)}
+                      className={({ isActive }) => 
+                        `block px-4 py-3 text-sm font-medium transition-colors duration-200 hover:bg-gray-100 ${
+                          isActive ? 'bg-gray-100 text-black' : 'text-gray-700'
+                        }`
+                      }
+                    >
+                      Startup Incubation
+                    </NavLink>
+                    <NavLink
+                      to="/builddspace/services/startup-support"
+                      onClick={() => setIsServicesDropdownOpen(false)}
+                      className={({ isActive }) => 
+                        `block px-4 py-3 text-sm font-medium transition-colors duration-200 hover:bg-gray-100 ${
+                          isActive ? 'bg-gray-100 text-black' : 'text-gray-700'
+                        }`
+                      }
+                    >
+                      Startup Support
+                    </NavLink>
+                    <NavLink
+                      to="/builddspace/services/work-space"
+                      onClick={() => setIsServicesDropdownOpen(false)}
+                      className={({ isActive }) => 
+                        `block px-4 py-3 text-sm font-medium transition-colors duration-200 hover:bg-gray-100 ${
+                          isActive ? 'bg-gray-100 text-black' : 'text-gray-700'
+                        }`
+                      }
+                    >
+                      Work Space
+                    </NavLink>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
             <NavLink 
               to="/builddspace/contact"
               className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white"
@@ -117,11 +172,23 @@ const Header = () => {
                     <Link to="/builddspace/about">About</Link>
                   </SheetTrigger>
                 </Button>
-                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/builddspace/services">Services</Link>
-                  </SheetTrigger>
-                </Button>
+                <div className="space-y-2">
+                  <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white ml-4">
+                    <SheetTrigger asChild className="md:hidden">
+                      <Link to="/builddspace/services/startup-incubation">Startup Incubation</Link>
+                    </SheetTrigger>
+                  </Button>
+                  <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white ml-4">
+                    <SheetTrigger asChild className="md:hidden">
+                      <Link to="/builddspace/services/startup-support">Startup Support</Link>
+                    </SheetTrigger>
+                  </Button>
+                  <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white ml-4">
+                    <SheetTrigger asChild className="md:hidden">
+                      <Link to="/builddspace/services/work-space">Work Space</Link>
+                    </SheetTrigger>
+                  </Button>
+                </div>
                 <Button variant="outline" className="w-full flex items-center bg-amber-600 hover:bg-amber-700 text-white border-amber-600 hover:border-amber-700">
                   <SheetTrigger asChild className="md:hidden">
                     <Link to="/builddspace/contact">Contact</Link>
