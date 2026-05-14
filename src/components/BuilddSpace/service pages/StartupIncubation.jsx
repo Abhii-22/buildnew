@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Rocket, Users, Building, Lightbulb, Globe, Zap, Shield, Target, TrendingUp, Award, Cpu, Heart, Briefcase, Clock, Star, ArrowRight, CheckCircle, Brain, Code, DollarSign, Eye, Handshake, BarChart, PieChart, Calendar, MapPin, Mail, Phone, FileText, Search } from "lucide-react";
 
 // Import images
-import StartupIncubation from "@/assets/IMAGES/startupincubation.jpg";
+import startupIncubationHeroVideo from "@/assets/startup incubation.mp4";
 import StartupSupport from "@/assets/IMAGES/pexels-yankrukov-7792886.jpg";
 import workSpaceImage from "@/assets/IMAGES/kyle-gregory-devaras-6RTM8EsD1T8-unsplash.jpg";
 
@@ -96,31 +96,20 @@ const StartupIncubationPage = () => {
 
   return (
     <div className="flex flex-col w-full">
-      {/* Hero Section with Overlay */}
-      <section className="relative h-screen flex items-center justify-start overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src={StartupIncubation}
-            alt="Startup Incubation"
-            className="w-full h-full object-cover"
-          />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60"></div>
-        </div>
-
-        {/* Content Overlay */}
-        <div className="relative z-10 text-left text-white px-4 md:px-8 lg:px-12 xl:px-16">
+      {/* Hero: copy left, video right (same pattern as Work Space) */}
+      <section className="relative min-h-screen flex flex-col lg:flex-row lg:items-stretch overflow-hidden bg-gray-950">
+        <div className="relative z-10 w-full lg:w-1/2 flex items-center justify-start px-4 md:px-8 lg:px-12 xl:px-16 py-12 lg:py-16 text-left text-white order-2 lg:order-1">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
+            className="max-w-xl"
           >
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight"
+              className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight"
             >
               Startup
               <span className="text-white font-black">
@@ -132,7 +121,7 @@ const StartupIncubationPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              className="text-xl md:text-2xl mb-8 leading-relaxed text-white bg-black/20 backdrop-blur-sm p-6 rounded-2xl"
+              className="text-xl md:text-2xl mb-8 leading-relaxed text-white/95 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10"
             >
               Transform your innovative ideas into successful ventures <br/>with our comprehensive 12-week incubation program. <br/>
               Get mentorship, funding, and technical support <br/>to accelerate your startup journey.
@@ -157,13 +146,21 @@ const StartupIncubationPage = () => {
           </motion.div>
         </div>
 
-              </section>
+        <div className="relative isolate w-full lg:w-1/2 min-h-[42vh] sm:min-h-[48vh] lg:min-h-screen shrink-0 overflow-hidden bg-black order-1 lg:order-2">
+          <video
+            src={startupIncubationHeroVideo}
+            className="absolute inset-0 h-full w-full object-cover [transform:translate3d(0,0,0)] [backface-visibility:hidden]"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            disablePictureInPicture
+            aria-label="Startup Incubation"
+          />
+        </div>
+      </section>
 
-      
-      
-      
-      
-      
       {/* Why Choose Startup Incubation Section */}
       <section className="py-20 bg-gradient-to-br from-cyan-50 via-teal-50 to-emerald-50">
         <div className="container mx-auto px-6">

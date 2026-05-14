@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Rocket, Users, Building, Lightbulb, Globe, Zap, Shield, Target, TrendingUp, Award, Cpu, Heart, Briefcase, Clock, Star, ArrowRight, CheckCircle, Brain, Code, DollarSign, Eye, Handshake, BarChart, PieChart, Calendar, MapPin, Mail, Phone, FileText, Search, TrendingUpIcon, UserCheck, MessageSquare } from "lucide-react";
 
 // Import images
+import startupSupportHeroVideo from "@/assets/startupsupport.mp4";
 import StartupSupport from "@/assets/IMAGES/pexels-yankrukov-7792886.jpg";
 import StartupIncubation from "@/assets/IMAGES/campaign-creators-gMsnXqILjp4-unsplash (3).jpg";
 import workSpaceImage from "@/assets/IMAGES/kyle-gregory-devaras-6RTM8EsD1T8-unsplash.jpg";
@@ -99,31 +100,20 @@ const StartupSupportPage = () => {
 
   return (
     <div className="flex flex-col w-full">
-      {/* Hero Section with Overlay */}
-      <section className="relative h-screen flex items-center justify-start overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src={StartupSupport}
-            alt="Startup Support"
-            className="w-full h-full object-cover"
-          />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60"></div>
-        </div>
-
-        {/* Content Overlay */}
-        <div className="relative z-10 text-left text-white px-4 md:px-8 lg:px-12 xl:px-16">
+      {/* Hero: copy left, video right (same pattern as Work Space) */}
+      <section className="relative min-h-screen flex flex-col lg:flex-row lg:items-stretch overflow-hidden bg-gray-950">
+        <div className="relative z-10 w-full lg:w-1/2 flex items-center justify-start px-4 md:px-8 lg:px-12 xl:px-16 py-12 lg:py-16 text-left text-white order-2 lg:order-1">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
+            className="max-w-xl"
           >
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight"
+              className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight"
             >
               Startup
               <span className="text-white font-black">
@@ -134,7 +124,7 @@ const StartupSupportPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              className="text-xl md:text-2xl mb-8 leading-relaxed text-white bg-black/20 backdrop-blur-sm p-6 rounded-2xl"
+              className="text-xl md:text-2xl mb-8 leading-relaxed text-white/95 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10"
             >
               Expert guidance and resources to validate your idea,<br/> build a strong foundation, and accelerate your startup journey. <br/>
               From concept to launch, we're here to support you every step of the way.
@@ -158,12 +148,25 @@ const StartupSupportPage = () => {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
+        <div className="relative isolate w-full lg:w-1/2 min-h-[42vh] sm:min-h-[48vh] lg:min-h-screen shrink-0 overflow-hidden bg-black order-1 lg:order-2">
+          <video
+            src={startupSupportHeroVideo}
+            className="absolute inset-0 h-full w-full object-cover [transform:translate3d(0,0,0)] [backface-visibility:hidden]"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            disablePictureInPicture
+            aria-label="Startup Support"
+          />
+        </div>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -171,7 +174,7 @@ const StartupSupportPage = () => {
             className="text-white text-center"
           >
             <div className="text-sm mb-2">Scroll to explore</div>
-            <ArrowRight className="w-6 h-6 mx-auto transform rotate-90" />
+            <ArrowRight className="w-6 h-6 mx-auto rotate-90" />
           </motion.div>
         </motion.div>
       </section>

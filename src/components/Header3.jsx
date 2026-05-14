@@ -58,13 +58,13 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-8">
             <NavLink 
               to="/"
-              className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white"
+              className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               Home
             </NavLink>
             <NavLink 
               to="/builddspace/about"
-              className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white"
+              className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               About
             </NavLink>
@@ -73,7 +73,7 @@ const Header = () => {
                 onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
                 onMouseEnter={() => setIsServicesDropdownOpen(true)}
                 onMouseLeave={() => setIsServicesDropdownOpen(false)}
-                className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white flex items-center gap-2"
+                className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2"
               >
                 Services
                 <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
@@ -129,7 +129,7 @@ const Header = () => {
             </div>
             <NavLink 
               to="/builddspace/contact"
-              className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-white"
+              className="px-4 py-2 bg-transparent hover:bg-white hover:text-black text-white text-sm font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               Contact
             </NavLink>
@@ -161,35 +161,35 @@ const Header = () => {
                 <SheetTitle>Menu</SheetTitle>
               </SheetHeader>
               <div className="space-y-4 mt-4">
-                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white">
+                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-0 shadow-none">
                   <SheetTrigger asChild className="md:hidden">
                     <Link to="/">Home</Link>
                   </SheetTrigger>
                 </Button>
                 
-                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white">
+                <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-0 shadow-none">
                   <SheetTrigger asChild className="md:hidden">
                     <Link to="/builddspace/about">About</Link>
                   </SheetTrigger>
                 </Button>
                 <div className="space-y-2">
-                  <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white ml-4">
+                  <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-0 shadow-none ml-4">
                     <SheetTrigger asChild className="md:hidden">
                       <Link to="/builddspace/services/startup-incubation">Startup Incubation</Link>
                     </SheetTrigger>
                   </Button>
-                  <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white ml-4">
+                  <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-0 shadow-none ml-4">
                     <SheetTrigger asChild className="md:hidden">
                       <Link to="/builddspace/services/startup-support">Startup Support</Link>
                     </SheetTrigger>
                   </Button>
-                  <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-white hover:border-white ml-4">
+                  <Button variant="outline" className="w-full flex items-center bg-transparent hover:bg-white hover:text-black text-black border-0 shadow-none ml-4">
                     <SheetTrigger asChild className="md:hidden">
                       <Link to="/builddspace/services/work-space">Work Space</Link>
                     </SheetTrigger>
                   </Button>
                 </div>
-                <Button variant="outline" className="w-full flex items-center bg-amber-600 hover:bg-amber-700 text-white border-amber-600 hover:border-amber-700">
+                <Button variant="outline" className="w-full flex items-center bg-amber-600 hover:bg-amber-700 text-white border-0 shadow-none">
                   <SheetTrigger asChild className="md:hidden">
                     <Link to="/builddspace/contact">Contact</Link>
                   </SheetTrigger>
